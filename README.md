@@ -11,4 +11,4 @@ goats = [Laura Steadman, Jorge Tellez, John Maddux]
 
 * Clone the repo
 * Start Rails / rails s
-* Start Faye / rackup faye.ru -s thin -E production
+* Start Private Pub / rackup private_pub.ru -s thin -E production

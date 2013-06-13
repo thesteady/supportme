@@ -112,6 +112,8 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.2)
     polyglot (0.3.3)
+    private_pub (1.0.3)
+      faye
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -199,9 +201,9 @@ DEPENDENCIES
   bootstrap-sass
   capybara
   coffee-rails (~> 3.2.1)
-  faye
   jquery-rails
   launchy
+  private_pub
   rails (= 3.2.13)
   rspec-rails
   sass-rails (~> 3.2.3)
