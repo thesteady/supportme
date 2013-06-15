@@ -5,11 +5,39 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag :defaults, "http://localhost:9292/faye.js" %>
+
   <%= csrf_meta_tags %>
 </head>
-<body>
+  <body class="<%= params[:controller] %>">
+    <div id="container-fluid">
 
-<%= yield %>
+      <div class="navbar">
+        <div class="navbar-inner">
 
-</body>
+          <div class="brand">
+            SupportMe
+          </div>
+
+          <% if current_user %>
+            Logged in as <%= current_user.email %>.
+            <%= link_to "Log out", logout_path %>
+          <% end %>
+
+        </div>
+      </div>
+
+    <% if flash.notice %>
+      <div class="alert">
+        <%= flash.notice %>
+      </div>
+    <% elsif flash.alert %>
+      <div class="alert alert-error">
+        <%= flash.alert %>
+      </div>
+    <% end %>
+
+      <%= yield %>
+
+    </div>
+  </body>
 </html>
