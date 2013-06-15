@@ -1,7 +1,8 @@
 SupportMe::Application.routes.draw do
 
-  get '/demo' => 'chats#index', as: 'chats'
+  get '/demo'     => 'chats#index', as: 'chats'
   get '/demo/:id' => 'chats#show', as: 'chat'
+  post '/demo'    => 'chats#create', as: 'chats'
 
   # get '/support' => 'admins#chat', as: "admin_chat"
 
@@ -10,7 +11,6 @@ SupportMe::Application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
   resources :users,    only: [:create]
-  resources :chats,    only: [:create]
   resources :messages, only: [:create]
 
   root :to => "home#show"

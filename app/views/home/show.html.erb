@@ -6,7 +6,9 @@
       <p id="home-leader">
         The best way to provide live support to your customers in your website.
       </p>
-      <a href="#signup-form" role="button" class="home-action" data-toggle="modal">Sign up</a>
+      <p class="home-action">
+        <a href="#signup-form" role="button" data-toggle="modal">Sign up</a> or <%= link_to "Try our demo", chats_path, method: :post %>
+      </p>
 
       <!-- Modal -->
       <div id="signup-form" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
