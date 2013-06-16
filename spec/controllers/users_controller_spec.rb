@@ -10,7 +10,7 @@ describe UsersController do
       }
       expect(response).to be_redirect
       expect(response).to redirect_to chats_path
-      expect(flash[:notice]).to eq "You are account was created."
+      expect(flash[:notice]).to eq "Your account was created."
     end
 
     it "redirects to root_url when password and password confirmation don't match" do
