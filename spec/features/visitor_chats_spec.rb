@@ -31,5 +31,12 @@ describe 'visitor views the home page' do
   end
 
   describe 'visitor logs in to existing account' do
+    context 'with correct credentials' do
+      it 'takes them to their account or home page of some sort'
+    end
+
+    context 'with incorrect credentials' do
+      it 'redirects them to log in, with a flash notice'
+    end
   end
 end
