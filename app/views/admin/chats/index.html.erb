@@ -1,7 +1,14 @@
-<h1>Chat List</h1>
+<div class='content'>
+  <h1>Chat List</h1>
 
-<div style='padding:30px;'>
-  <% @chats.each do |chat| %>
-    <%= link_to "Open Chat ##{chat.id}", admin_chat_path(chat) %>
-  <% end %>
-<div>
+  <div>
+    <h3># of Customers Waiting: <%= @chats.count %></h3>
+  </div>
+
+  <div>
+    <% @chats.each do |chat| %>
+      <%= link_to "Open Chat ##{chat.id}", admin_chat_path(chat) %>
+      <br>
+    <% end %>
+  <div>
+</div>

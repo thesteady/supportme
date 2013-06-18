@@ -7,10 +7,12 @@ describe 'Tech Support Helps' do
   end
   
   describe 'going to the admin/support page' do
-    it 'has a list of chats' do
+    it 'has a list of chats with a count' do
  
       expect(page).to have_content('Chat List')
       expect(page).to have_content('Open Chat #1')
+
+      expect(page).to have_content('# of Customers Waiting')
     end
   end
 
