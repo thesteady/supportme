@@ -1,0 +1,7 @@
+<h1>Chat List</h1>
+
+<div style='padding:30px;'>
+  <% @chats.each do |chat| %>
+    <%= link_to "Open Chat ##{chat.id}", admin_chat_path(chat) %>
+  <% end %>
+<div>
