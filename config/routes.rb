@@ -4,8 +4,6 @@ SupportMe::Application.routes.draw do
   get '/demo/:id' => 'chats#show', as: 'chat'
   post '/demo'    => 'chats#create', as: 'chats'
 
-  # get '/support' => 'admins#chat', as: "admin_chat"
-
   match "logout", to: "sessions#destroy"
   match "login",  to: "sessions#create"
 
@@ -15,4 +13,10 @@ SupportMe::Application.routes.draw do
   resources :messages,  only: [:create]
 
   root :to => "home#show"
+
+  namespace :admin do
+    get '/support', to: 'chats#index', as: 'chats'
+    resources :chats, only: [:show]
+  end
+  
 end
