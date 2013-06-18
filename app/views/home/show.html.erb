@@ -1,69 +1,23 @@
 <div class="container" id="home">
-
   <div class="row-fluid">
     <div class="span8">
-      <h1 id="home-header">SupportMe</h1>
+      <h1 id="home-header">
+        SupportMe
+      </h1>
+
       <p id="home-leader">
         The best way to provide live support to your customers in your website.
       </p>
+
       <p class="home-action">
         <a href="#signup-form" role="button" data-toggle="modal">Sign up</a> or <%= link_to "Try our demo", chats_path, method: :post %>
       </p>
 
-      <!-- Modal -->
-      <div id="signup-form" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-body">
-          <h2 id="modal-header">Create an account</h2>
-          <%= form_for @user, class:"home-form" do |f| %>
-            <% if @user.errors.any? %>
-              <div class="error_messages">
-                <ul>
-                  <% for message in @user.errors.full_messages %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-            <div class="field">
-              <%= f.label :email %>
-              <%= f.text_field :email %>
-            </div>
-            <div class="field">
-              <%= f.label :password %>
-              <%= f.password_field :password %>
-            </div>
-            <div class="field">
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation %>
-            </div>
-            <div class="modal-buttons">
-              <%= f.submit("Create account", class: "btn btn-success span5 pull-right") %>
-              <a class="pull-right" id="modal-cancel" data-dismiss="modal" aria-hidden="true">Cancel</a>
-            </div>
-          <% end %>
-        </div>
-      </div>
+      <%= render partial: "modal", locals: { user: @user } %>
     </div>
 
     <div class="span3" id="login-form">
-      <h3 id="text">Log in</h3>
-
-      <%= form_tag sessions_path, class: "form" do %>
-        <div class="field">
-          <%= label_tag :email %>
-          <%= text_field_tag :email, params[:email] %>
-        </div>
-        <div class="field">
-          <%= label_tag :password %>
-          <%= password_field_tag :password %>
-        </div>
-        <div class="checkbox">
-          <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-          <%= label_tag :remember_me %>
-        </div>
-        <div class="actions"><%= submit_tag "Log in", class: "btn btn-success span5 pull-right" %></div>
-      <% end %>
+      <%= render "login_form" %>
     </div>
   </div>
-
 </div>

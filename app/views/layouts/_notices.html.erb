@@ -1,0 +1,9 @@
+<% if flash.notice %>
+  <div class="alert">
+    <%= flash.notice %>
+  </div>
+<% elsif flash.alert %>
+  <div class="alert alert-error">
+    <%= flash.alert %>
+  </div>
+<% end %>

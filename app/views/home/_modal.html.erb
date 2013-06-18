@@ -1,0 +1,32 @@
+<div id="signup-form" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    <h2 id="modal-header">Create an account</h2>
+    <%= form_for user, class:"home-form" do |f| %>
+      <% if user.errors.any? %>
+        <div class="error_messages">
+          <ul>
+            <% for message in user.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <div class="modal-buttons">
+        <%= f.submit("Create account", class: "btn btn-success span5 pull-right") %>
+        <a class="pull-right" id="modal-cancel" data-dismiss="modal" aria-hidden="true">Cancel</a>
+      </div>
+    <% end %>
+  </div>
+</div>

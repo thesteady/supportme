@@ -1,0 +1,12 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="brand">
+      SupportMe
+    </div>
+
+    <% if current_user %>
+      Logged in as <%= current_user.email %>.
+      <%= link_to "Log out", logout_path %>
+    <% end %>
+  </div>
+</div>
