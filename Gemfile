@@ -7,6 +7,7 @@ gem 'thin'
 gem 'bootstrap-sass'
 gem 'sorcery'
 gem 'private_pub'
+gem 'rails_autolink'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
