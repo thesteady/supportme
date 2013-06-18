@@ -19,7 +19,6 @@ describe 'Tech Support Helps' do
       click_link 'Open Chat #1'
       expect(current_path).to eq '/admin/chats/1'
       expect(page).to have_content('Chat #1')
-      expect(page).to have_content('Send')
 
       fill_in :message_content, with: 'test'
       click_link_or_button 'Send'

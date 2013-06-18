@@ -5,6 +5,6 @@
 
 
 <% publish_to "/messages/new" do %>
-  $("#chat").append("<%= escape_javascript render partial: 'admin/chats/message', collection: @messages' %>");
+  $("#chat").append("<%= escape_javascript render partial: 'admin/chats/message', collection: @messages %>");
   $("#new_message")[0].reset();
 <% end %>
