@@ -17,7 +17,7 @@ describe SessionsController do
         password: "goats",
       }
       expect(response).to be_redirect
-      expect(response).to redirect_to chats_path
+      expect(response).to redirect_to admin_chats_path
       expect(flash[:notice]).to eq "Logged in."
     end
 
