@@ -1,25 +1,19 @@
 <div class='content'>
-  <h1>Chat List</h1>
 
-  <div>
+  <div class='support-chat-sidebar pull-left'>
+    <h1>Chat List</h1>
     <h3># of Customers Waiting: <%= @chats.count %></h3>
+
+      <% @chats.each do |chat| %>
+        <%= link_to "Open Chat ##{chat.id}", admin_chat_path(chat), remote: true, method: :get, :'data-chat'=> chat.id, class: 'support-chat-link' %>
+        <br>
+      <% end %>
   </div>
-
-  <div>
-    <% @chats.each do |chat| %>
-      <%= link_to "Open Chat ##{chat.id}", admin_chat_path(chat), remote: true, method: :get, :'data-chat'=> chat.id, class: 'test' %>
-      <br>
-    <% end %>
-  <div>
-
   
   <div id='support-chat-window'>
-    <br>
-    <p>things go here.</p>
     <% if @chat.present? %>
       <%= render @chat %>
     <% end %>
-    <br>
   </div>
 
 </div>
