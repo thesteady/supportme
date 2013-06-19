@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
                   :password,
                   :password_confirmation
 
+  validates :email,    presence: true, uniqueness: true, format: { with: /.+@.+\..+/i }
   validates :password, presence: true, confirmation: true, on: :create
-  validates :email,    presence: true, uniqueness: true
 
   has_many :chats
   has_many :messages, through: :chats

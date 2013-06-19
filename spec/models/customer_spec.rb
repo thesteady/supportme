@@ -15,6 +15,14 @@ describe Customer do
         )
       expect(result).not_to be_valid
     end
+
+    it "doesn't create a user when the email is invalid" do
+      result = Customer.create(
+        name: "Mr. Goat",
+        email: "farm.com"
+        )
+      expect(result).not_to be_valid
+    end
   end
 
   context "when given correct parameters" do

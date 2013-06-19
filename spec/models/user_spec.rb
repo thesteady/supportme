@@ -26,6 +26,15 @@ describe User do
       expect(result).not_to be_valid
     end
 
+    it "doesn't create a user when the email is invalid" do
+      result = User.create(
+        email: "farm.com",
+        password: "goats",
+        password_confirmation: "goats"
+        )
+      expect(result).not_to be_valid
+    end
+
     it "doesn't create a user when email already exists" do
       User.create(
         email: "goat@farm.com",
