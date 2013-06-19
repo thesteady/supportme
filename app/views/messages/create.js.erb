@@ -1,10 +1,10 @@
-<% publish_to chat_path(@chat) do %>
+<% publish_to admin_chat_path(@chat) do %>
   $("#chat").append("<%= escape_javascript render @message %>");
   $("#new_message")[0].reset();
 <% end %>
 
 
-<% publish_to chat_path(@chat) do %>
+<% publish_to admin_chat_path(@chat) do %>
   $("#chat").append("<%= escape_javascript render partial: 'admin/chats/message', collection: @messages %>");
   $("#new_message")[0].reset();
 <% end %>
