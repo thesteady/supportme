@@ -7,8 +7,19 @@
 
   <div>
     <% @chats.each do |chat| %>
-      <%= link_to "Open Chat ##{chat.id}", admin_chat_path(chat) %>
+      <%= link_to "Open Chat ##{chat.id}", admin_chat_path(chat), remote: true, method: :get, :'data-chat'=> chat.id, class: 'test' %>
       <br>
     <% end %>
   <div>
+
+  
+  <div id='support-chat-window'>
+    <br>
+    <p>things go here.</p>
+    <% if @chat.present? %>
+      <%= render @chat %>
+    <% end %>
+    <br>
+  </div>
+
 </div>
