@@ -8,7 +8,7 @@ class CustomersController < ApplicationController
 
     if customer.save
       chat = customer.chats.create
-      redirect_to chat_path(chat.id)
+      redirect_to admin_chat_path(chat.id)
     else
       redirect_to new_customer_path
     end

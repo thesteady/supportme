@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ChatsController do
+describe DemoController do
 
   describe "GET 'create'" do
     it "returns http success" do

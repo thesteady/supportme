@@ -19,7 +19,7 @@ describe CustomersController do
       }
 
       expect(response).to be_redirect
-      expect(response).to redirect_to chat_path(Chat.first)
+      expect(response).to redirect_to admin_chat_path(Chat.first)
 
       result = Customer.count
       expect(result).to eq (count + 1)
@@ -39,7 +39,7 @@ describe CustomersController do
       }
 
       expect(response).to be_redirect
-      expect(response).to redirect_to chat_path(Chat.first)
+      expect(response).to redirect_to admin_chat_path(Chat.first)
 
       result = Customer.count
       expect(result).to eq (count)

@@ -27,7 +27,7 @@ describe 'visitor views the home page' do
       click_link_or_button 'Create account'
 
       expect(page).to have_content('Your account was created.')
-    end 
+    end
   end
 
   describe 'visitor logs in to existing account' do

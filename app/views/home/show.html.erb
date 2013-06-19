@@ -10,7 +10,7 @@
       </p>
 
       <p class="home-action">
-        <a href="#signup-form" role="button" data-toggle="modal">Sign up</a> or <%= link_to "Try our demo", chats_path, method: :post %>
+        <a href="#signup-form" role="button" data-toggle="modal">Sign up</a> or <%= link_to "Try our demo", create_demo_path, method: :post %>
       </p>
 
       <%= render partial: "modal", locals: { user: @user } %>

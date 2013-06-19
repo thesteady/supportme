@@ -17,7 +17,7 @@ describe HomeController do
       controller.stub!(:current_user).and_return(user)
       get :show
       expect(response).to be_redirect
-      expect(response).to redirect_to chats_path
+      expect(response).to redirect_to admin_chats_path
     end
   end
 end

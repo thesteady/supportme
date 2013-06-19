@@ -1,10 +1,10 @@
-class ChatsController < ApplicationController
+class DemoController < ApplicationController
   def index
   end
 
   def create
     chat = Chat.create
-    redirect_to chat_path(chat.id)
+    redirect_to demo_path(chat.id)
   end
 
   def show
