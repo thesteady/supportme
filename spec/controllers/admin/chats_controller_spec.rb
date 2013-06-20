@@ -14,6 +14,12 @@ describe Admin::ChatsController do
       get :index
       expect(assigns(:chats)).to eq([chat])
     end
+
+    it 'assigns the active chats variable' do
+      chat = Chat.create(status: 'active')
+      get :index
+      expect(assigns(:active_chats)).to eq([chat])
+    end
   end
 
   describe 'GET show' do
