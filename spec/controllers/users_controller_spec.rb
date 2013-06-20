@@ -9,8 +9,8 @@ describe UsersController do
         password_confirmation: "goats"
       }
       expect(response).to be_redirect
-      expect(response).to redirect_to admin_chats_path
-      expect(flash[:notice]).to eq "Your account was created."
+      expect(response).to redirect_to root_url
+      expect(flash[:notice]).to eq "Your account was created. You can login now."
     end
 
     it "redirects to root_url when password and password confirmation don't match" do

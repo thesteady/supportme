@@ -3,11 +3,11 @@ class UsersController < ApplicationController
     user = User.new(params[:user])
 
     if user.save
-      flash[:notice] = "Your account was created."
-      redirect_to admin_chats_path
+      flash[:notice] = "Your account was created. You can login now."
     else
       flash[:alert]  = "Your account could not be created."
-      redirect_to root_url
     end
+
+    redirect_to root_url
   end
 end
