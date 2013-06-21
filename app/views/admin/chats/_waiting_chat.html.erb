@@ -1,0 +1,10 @@
+<li>
+  <%= 
+      link_to "Chat ##{waiting_chat.id}",
+      admin_chat_path(waiting_chat),
+      remote: true,
+      method: :get,
+      :'data-chat'=> waiting_chat.id,
+      class: 'support-chat-link waiting'
+  %>
+</li>

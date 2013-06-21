@@ -9,10 +9,10 @@ describe Admin::ChatsController do
       expect(response).to render_template(:index)
     end
 
-    it 'assigns the chats variable' do
+    it 'assigns the waiting chats variable' do
       chat = Chat.create
       get :index
-      expect(assigns(:chats)).to eq([chat])
+      expect(assigns(:waiting_chats)).to eq([chat])
     end
 
     it 'assigns the active chats variable' do

@@ -1,0 +1,11 @@
+<li>
+  <%= 
+      link_to "Chat ##{active_chat.id}",
+      admin_chat_path(active_chat),
+      remote: true,
+      method: :get,
+      :'data-chat'=> active_chat.id,
+      class: 'support-chat-link active'
+  %>
+</li>
+

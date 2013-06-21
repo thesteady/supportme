@@ -1,6 +1,6 @@
 class Admin::ChatsController < ApplicationController
   def index
-    @chats = Chat.where(status: 'waiting')
+    @waiting_chats = Chat.where(status: 'waiting')
     @active_chats = Chat.where(status: 'active')
   end
 
