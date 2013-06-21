@@ -1,19 +1,48 @@
 <div class='content'>
-
   <div class='support-chat-sidebar pull-left'>
     <h1>Chat List</h1>
-    <h3># of Customers Waiting: <%= @chats.count %></h3>
-
-      <% @chats.each do |chat| %>
-        <%= link_to "Open Chat ##{chat.id}", admin_chat_path(chat), remote: true, method: :get, :'data-chat'=> chat.id, class: 'support-chat-link' %>
-        <br>
-      <% end %>
-  </div>
   
-  <div id='support-chat-window'>
-    <% if @chat.present? %>
-      <%= render @chat %>
-    <% end %>
+  <div id='active-chats'>
+    <h4>You Are Working With:</h4>
+    <ul id='active-chats-list'>
+      <% @active_chats.each do |active_chat| %>
+        <li><%= link_to "Chat ##{active_chat.id}", admin_chat_path(active_chat), remote: true, method: :get, :'data-chat'=> active_chat.id, class: 'support-chat-link active' %></li>
+      <% end %>
+    </ul>
   </div>
 
+  <hr>
+     <!-- This eventually needs to be open chats (NOT ones that are in process or resolved) -->
+    <% if @chats.count == 0 %>
+      <h4>No one needs help at the moment.</h4>
+    <% else %>
+      
+      <h4># of Customers Waiting: <%= @chats.count %></h4>
+      <ul id='waiting-chats-list'>
+        <% @chats.each do |chat| %>
+          <li>
+            <%= link_to "Chat ##{chat.id}", admin_chat_path(chat), remote: true, method: :get, :'data-chat'=> chat.id, class: 'support-chat-link waiting' %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    </div>
+    
+    <div id='support-chat-window'>
+      <% if @chat.present? %>
+        <%= render @chat %>
+      <% end %>
+    </div>
 </div>
+
+<script>
+  var WaitingClickListener = function() {
+    $('.waiting').on('click', function() {
+      $('#active-chats ul').append(this).append('<br>');
+    });
+  };
+
+  $(function(){
+    WaitingClickListener();
+  });
+</script>
