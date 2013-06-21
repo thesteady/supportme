@@ -8,8 +8,8 @@ describe 'Tech Support Helps' do
         visit admin_chats_path
         expect(page).to have_content('No one needs help at the moment.')
         expect(page).to_not have_content('# of Customers Waiting')
-        # expect(page).to_not have_content('You Are Working With:')
-        # expect(page).to have_content('No Active Chats.')
+        expect(page).to_not have_content('You Are Working With:')
+        expect(page).to have_content('No Active Chats.')
       end
     end
 
@@ -24,8 +24,7 @@ describe 'Tech Support Helps' do
 
     context 'when Ive started a chat' do
       it 'has a list of customers with whom I have started working with', js: true do
-        visit_page_with_a_waiting_chat
-        click_link 'Chat #1'
+        visit_page_with_an_active_chat
         within('div#active-chats') do
           expect(page).to have_content('You Are Working With:')
           expect(page).to have_content('Chat #1')
@@ -35,9 +34,8 @@ describe 'Tech Support Helps' do
 
     context 'when I dont have an active chat' do
       it 'tells me that i have no active chats' do
-        pending 'next move is here!'
         visit_page_with_a_waiting_chat
-        expect(page).to have_selector('.active-chats')
+        expect(page).to have_selector('#active-chats')
         expect(page).to have_content('No Active Chats.')
       end
     end
@@ -61,7 +59,7 @@ describe 'Tech Support Helps' do
 
   describe 'resolving a chat-issue' do
     before(:each) do
-      visit_page_with_a_waiting_chat
+      visit_page_with_an_active_chat
     end
 
     context 'when the chat is finished and the issue is resolved' do
@@ -77,6 +75,11 @@ describe 'Tech Support Helps' do
 
   def visit_page_with_a_waiting_chat
     Chat.create
+    visit admin_chats_path
+  end
+  
+  def visit_page_with_an_active_chat
+    Chat.create(status: 'active')
     visit admin_chats_path
   end
 

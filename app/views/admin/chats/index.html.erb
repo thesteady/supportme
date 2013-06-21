@@ -3,27 +3,30 @@
     <h1>Chat List</h1>
   
     <div id='active-chats'>
-      <h4>You Are Working With:</h4>
+      <% if @active_chats.count == 0 %>
+        <h4>No Active Chats.</h4>
+      <% else %>
+        <h4>You Are Working With:</h4>
+      <% end %>
 
-      <ul id='active-chats-list'>
-        <%= render partial: '/admin/chats/active_chat', collection: @active_chats %>
-      <ul>
+        <ul id='active-chats-list'>
+          <%= render partial: '/admin/chats/active_chat', collection: @active_chats %>
+        <ul>
     </div>
 
     <hr>
-    
+
     <div id='waiting-chats'>
       <% if @waiting_chats.count == 0 %>
         <h4>No one needs help at the moment.</h4>
       <% else %>
-        
         <h4># of Customers Waiting: <%= @waiting_chats.count %></h4>
+      <% end %>
 
         <ul id='waiting-chats-list'>
           <%= render partial: '/admin/chats/waiting_chat', collection: @waiting_chats %>
         </ul>
 
-      <% end %>
     </div>
   </div>
     
