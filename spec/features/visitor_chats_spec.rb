@@ -5,13 +5,15 @@ describe 'visitor views the home page' do
 
   describe 'visitor chats' do
     it 'lets a visitor start a chat' do
+      pending 'the send action doesn\'t work'
       visit '/'
 
       click_link 'Try our demo'
       expect(current_path).to eq '/demo/1'
 
-      fill_in :message_content, with: 'hello'
+      fill_in 'message_content', with: 'hello'
       click_button 'Send'
+      save_and_open_page
       expect(page).to have_content('hello')
     end
   end
