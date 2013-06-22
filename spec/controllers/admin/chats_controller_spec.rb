@@ -43,4 +43,23 @@ describe Admin::ChatsController do
       expect(assigns(:messages)).to eq([message])
     end
   end
+
+  describe 'POST update' do
+    it 'assigns the chat variable' do
+      chat =Chat.create
+      post :update, {id: chat.id}
+      expect(assigns(:chat)).to eq chat
+    end
+
+    it 'sets the chat to resolved' do
+      pending 'how do i get this to work?'
+      # chat = Chat.create(status: 'active')
+    
+      # expect{      
+      #   post :update, {id: chat.id}
+      # }.to change(chat, :status).to('resolved')
+
+      # expect(response).to redirect_to admin_chats_path      
+    end
+  end
 end

@@ -58,18 +58,19 @@ describe 'Tech Support Helps' do
     end
 
     context 'when the chat is finished and the issue is resolved' do
-      it 'lets me mark the issue is resolved' do
-        pending 'next step?'
+      it 'lets me mark the issue is resolved', js: true do
+  
         click_link 'Chat #1'
-        click_button 'Resolve Issue'
-        #expect flash notice issue resolved
-        #expect to not have that chat on the page anywhere any more
-        #expect the status of that chat to be resolved
-      end
+        click_link_or_button 'Resolve Issue'
+        expect(page).to have_selector('.alert'), 'Thanks for helping out!'
+        
+        within('div#active-chats') do
+          expect(page).to_not have_content('Chat #1')
+        end
 
-      it 'no longer shows the chat in the list of waiting or in process customers' do
-        pending
-        #
+        within('div#waiting-chats') do
+          expect(page).to_not have_content('Chat #1')
+        end
       end
     end
   end

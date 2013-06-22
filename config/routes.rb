@@ -14,7 +14,7 @@ SupportMe::Application.routes.draw do
 
   namespace :admin do
     get '/support', to: 'chats#index', as: 'chats'
-    resources :chats, only: [:show]
+    resources :chats, only: [:show, :update]
   end
 
 end
