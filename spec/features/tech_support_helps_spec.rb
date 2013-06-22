@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'Tech Support Helps' do
-  
   describe 'going to the admin/support page' do
     context 'when there are no active customers waiting for help' do
       it 'gives a message that there are no customers' do
@@ -49,11 +48,7 @@ describe 'Tech Support Helps' do
     it 'lets the user open a customer chat' do
       click_link 'Chat #1'
       expect(current_path).to eq '/admin/chats/1'
-      expect(page).to have_content('Chat #1')
-
-      fill_in :message_content, with: 'test'
-      click_link_or_button 'Send'
-      expect(page).to have_content('test')
+      expect(page).to have_content('Hello Mr. Goat.')
     end
   end
 
@@ -80,13 +75,18 @@ describe 'Tech Support Helps' do
   end
 
   def visit_page_with_a_waiting_chat
-    Chat.create
+    customer = Customer.create(
+      name: "Mr. Goat",
+      email: "goat@farm.com"
+      )
+    customer.chats.create
     visit admin_chats_path
   end
-  
+
   def visit_page_with_an_active_chat
     Chat.create(status: 'active')
     visit admin_chats_path
   end
 
 end
+

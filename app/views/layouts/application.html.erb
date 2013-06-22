@@ -10,7 +10,7 @@
   <body class="<%= params[:controller] %>">
     <div id="container-fluid">
 
-      <% unless request.fullpath == "/customers/new" %>
+      <% if request.fullpath != "/customers/new" %>
         <%= render "layouts/navbar" %>
       <% end %>
 

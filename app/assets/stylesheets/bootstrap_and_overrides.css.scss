@@ -90,7 +90,7 @@ a:focus {
   background-color: white;
   background-image: none;
   border: 1px solid #d4d4d4;
-  border-radius: none;
+  border-radius: 0px;
   box-shadow: none;
 }
 
@@ -204,9 +204,42 @@ h1{
 
 // CUSTOMER
 
+#customer-chat-time {
+  color: gray;
+  font-size: $font / 6;
+  margin-bottom: -4px;
+}
+
+#customer-chat-message {
+  font-size: $font / 4.5;
+  line-height: 1.2em;
+}
+
 .new_customer {
   width: 200px;
   margin-top: 20px;
+}
+
+.content {
+  padding: 45px;
+}
+
+#customer-chat-box {
+  position: fixed;
+  bottom: 0px;
+  margin-top: 2px;
+  margin-bottom: -20px;
+  background-color: white;
+  padding-top: 10px;
+  padding-left: 23px;
+  padding-right: 23px;
+  border-top: 1px solid gray;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.chat-input {
+  margin-left: -6px;
 }
 
 #customer-submit {
@@ -215,6 +248,7 @@ h1{
   width: 220px;
 }
 
-.content {
-  padding: 45px;
+#customer-chat {
+  margin: 10px;
+  margin-bottom: 40px;
 }

@@ -1,5 +1,6 @@
 class Chat < ActiveRecord::Base
-  attr_accessible :status
+  attr_accessible :status,
+                  :customer_id
 
   has_many :messages
 
@@ -7,6 +8,10 @@ class Chat < ActiveRecord::Base
   belongs_to :user
 
   validates :status, presence: true
-  validates :status, :inclusion => { :in => %w(waiting active resolved),
-                     :message => "%{value} is not a valid status" }
+
+  validates :status, inclusion: {
+    in:      %w(waiting active resolved),
+    message: "%{value} is not a valid status"
+  }
+
 end
