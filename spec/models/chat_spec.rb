@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Chat do
-  describe 'status validations' do
+  describe 'validations' do
     it 'is invalid without a status' do
       expect(Chat.new(status: nil)).to be_invalid
     end
@@ -19,12 +19,6 @@ describe Chat do
     it 'has a default status of waiting' do
       chat = Chat.create
       expect(chat.status).to eq 'waiting'
-    end
-  end
-
-  describe 'customer id validations' do
-    it 'is invalid without a customer id' do
-      pending 'JORGE: do we have this? do we need it?'
     end
   end
 end

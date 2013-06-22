@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620210342) do
+ActiveRecord::Schema.define(:version => 20130622233211) do
 
   create_table "chats", :force => true do |t|
     t.datetime "created_at",                         :null => false
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130620210342) do
     t.datetime "remember_me_token_expires_at"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+    t.string   "name"
   end
 
 end
