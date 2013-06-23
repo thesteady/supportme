@@ -11,7 +11,7 @@ describe DemoController do
 
   describe '#show' do
     it "displays a demo chat" do
-      chat = Chat.create
+      chat = Chat.create(customer_id: 1)
       get :show, id: chat.id
       expect(response).to be_ok
     end

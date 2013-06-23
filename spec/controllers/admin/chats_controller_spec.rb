@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Admin::ChatsController do
+  
+  let(:chat) { Chat.create(customer_id: 1) }
 
   describe 'GET index' do
     it 'renders the index template' do
@@ -10,13 +12,14 @@ describe Admin::ChatsController do
     end
 
     it 'assigns the waiting chats variable' do
-      chat = Chat.create
       get :index
       expect(assigns(:waiting_chats)).to eq([chat])
     end
 
     it 'assigns the active chats variable' do
-      chat = Chat.create(status: 'active')
+      chat.status = 'active'
+      chat.save
+
       get :index
       expect(assigns(:active_chats)).to eq([chat])
     end
@@ -24,20 +27,17 @@ describe Admin::ChatsController do
 
   describe 'GET show' do
     it 'renders the show template' do
-      chat = Chat.create
       get :show, { id: chat.id }
       expect(response).to be_ok
       expect(response).to render_template(:show)
     end
 
     it 'assigns the chat variable' do
-      chat = Chat.create
       get :show, {id: chat.id}
       expect(assigns(:chat)).to eq(chat)
     end
 
     it 'assigns the messages variable' do
-      chat = Chat.create
       message = chat.messages.create(content: 'hello')
       get :show, {id: chat.id}
       expect(assigns(:messages)).to eq([message])

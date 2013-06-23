@@ -75,16 +75,14 @@ describe 'Tech Support Helps' do
   end
 
   def visit_page_with_a_waiting_chat
-    customer = Customer.create(
-      name: "Mr. Goat",
-      email: "goat@farm.com"
-      )
+    customer = Customer.create( name: "Mr. Goat", email: "goat@farm.com" )
     customer.chats.create
     visit admin_chats_path
   end
 
   def visit_page_with_an_active_chat
-    Chat.create(status: 'active')
+    customer = Customer.create( name: "Mr. Goat", email: "goat@farm.com" )
+    customer.chats.create(status: 'active')
     visit admin_chats_path
   end
 
