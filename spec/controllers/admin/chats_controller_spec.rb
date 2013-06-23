@@ -38,7 +38,7 @@ describe Admin::ChatsController do
     end
 
     it 'assigns the messages variable' do
-      message = chat.messages.create(content: 'hello')
+      message = chat.messages.create(content: 'hello', customer_id: chat.customer_id)
       get :show, {id: chat.id}
       expect(assigns(:messages)).to eq([message])
     end

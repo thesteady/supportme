@@ -43,12 +43,20 @@ describe 'Tech Support Helps' do
   describe 'start chatting with customer' do
     before(:each) do
       visit_page_with_a_waiting_chat
+      click_link 'Chat #1'
     end
 
     it 'lets the user open a customer chat' do
-      click_link 'Chat #1'
       expect(current_path).to eq '/admin/chats/1'
       expect(page).to have_content('Hello Mr. Goat.')
+    end
+
+    it 'lets the user chat with a customer', js: true do
+      fill_in :message_content, with: 'hello i am chatting now!'
+      click_link_or_button 'Send'
+      within('#chat') do
+        expect(page).to have_content('hello i am chatting now!')
+      end
     end
   end
 
