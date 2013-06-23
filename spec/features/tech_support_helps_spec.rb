@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe 'Tech Support Helps' do
+  
   describe 'going to the admin/support page' do
     context 'when there are no active customers waiting for help' do
       it 'gives a message that there are no customers' do
-        visit admin_chats_path
+        login_user
+        # visit admin_chats_path
         expect(page).to have_content('No one needs help at the moment.')
         expect(page).to_not have_content('# of Customers Waiting')
         expect(page).to_not have_content('You Are Working With:')
@@ -82,16 +84,26 @@ describe 'Tech Support Helps' do
     end
   end
 
+  def login_user
+    user = User.create(name: 'Gooaaat', email: 'yeaah@supportgoat.com', password: 'goats', password_confirmation: 'goats')
+    visit '/'
+    fill_in :email, with: 'yeaah@supportgoat.com'
+    fill_in :password, with: 'goats'
+    click_link_or_button 'Log in'
+  end
+
   def visit_page_with_a_waiting_chat
     customer = Customer.create( name: "Mr. Goat", email: "goat@farm.com" )
     customer.chats.create
-    visit admin_chats_path
+    login_user
+    # visit admin_chats_path
   end
 
   def visit_page_with_an_active_chat
     customer = Customer.create( name: "Mr. Goat", email: "goat@farm.com" )
     customer.chats.create(status: 'active')
-    visit admin_chats_path
+    login_user
+    # visit admin_chats_path
   end
 
 end

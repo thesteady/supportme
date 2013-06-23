@@ -3,6 +3,11 @@ require 'spec_helper'
 describe Admin::ChatsController do
   
   let(:chat) { Chat.create(customer_id: 1) }
+  let(:user) {User.create(name: 'myrna', email: 'myrna@myrna.com', password: 'myrna', password_confirmation: 'myrna')}
+  
+  before(:each) do
+    controller.stub(:current_user).and_return(user)
+  end
 
   describe 'GET index' do
     it 'renders the index template' do
