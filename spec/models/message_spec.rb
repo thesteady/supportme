@@ -17,8 +17,6 @@ describe Message do
       message.chat_id = nil
       expect(message).to_not be_valid
     end
-
-  
   end
 
   describe 'author id validation' do
@@ -43,7 +41,5 @@ describe Message do
       message.customer_id = 42
       expect(message).to_not be_valid
     end
-
-
   end
 end

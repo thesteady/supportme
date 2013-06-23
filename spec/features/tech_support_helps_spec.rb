@@ -6,7 +6,6 @@ describe 'Tech Support Helps' do
     context 'when there are no active customers waiting for help' do
       it 'gives a message that there are no customers' do
         login_user
-        # visit admin_chats_path
         expect(page).to have_content('No one needs help at the moment.')
         expect(page).to_not have_content('# of Customers Waiting')
         expect(page).to_not have_content('You Are Working With:')
@@ -53,12 +52,17 @@ describe 'Tech Support Helps' do
       expect(page).to have_content('Hello Mr. Goat.')
     end
 
-    it 'lets the user chat with a customer', js: true do
+    it 'lets the user chat with a customer and provides author names', js: true do
       fill_in :message_content, with: 'hello i am chatting now!'
       click_link_or_button 'Send'
       within('#chat') do
         expect(page).to have_content('hello i am chatting now!')
+        # expect(page).to have_selector('chat-author')
       end
+
+      # within('#chat-author') do
+      #   expect(page).to have_content('Gooaaat')
+      # end
     end
   end
 

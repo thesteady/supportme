@@ -25,4 +25,6 @@ class Message < ActiveRecord::Base
   def customer_and_user_ids?
     !customer_id && !user_id
   end
+
+
 end
