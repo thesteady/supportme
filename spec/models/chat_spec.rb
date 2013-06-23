@@ -25,4 +25,8 @@ describe Chat do
       expect(chat.status).to eq 'waiting'
     end
   end
+
+  it 'has an optional user id' do
+    expect(Chat.new(customer_id: 1, user_id: 2)).to be_valid
+  end
 end
