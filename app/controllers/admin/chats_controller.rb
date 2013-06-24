@@ -4,7 +4,7 @@ class Admin::ChatsController < ApplicationController
 
   def index
     @waiting_chats = Chat.where(status: 'waiting')
-    @active_chats = Chat.where(status: 'active')
+    @active_chats = Chat.where(status: 'active').order("updated_at ASC")
   end
 
   def show
