@@ -17,7 +17,6 @@ goats = [Laura Steadman, Jorge Tellez, John Maddux]
 
 Copy and paste this code into your site to make it work.
 
-
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 
   <script>
@@ -28,12 +27,12 @@ Copy and paste this code into your site to make it work.
         .bind('mouseover', function(){
           console.log('entered iframe');
           inIframe = true;
-          if ( inIframe ) { $('#supportMe').css({height: "200"}); }
+          if ( inIframe ) { $('#supportMe').css({height: "260"}); }
         })
         .bind('mouseout', function(){
           console.log('left iframe');
           inIframe = false;
-          if ( inIframe == false ) { $('#supportMe').css({height: "50"}); }
+          if ( inIframe == false ) { $('#supportMe').css({height: "40"}); }
         });
       };
     ;
@@ -43,8 +42,7 @@ Copy and paste this code into your site to make it work.
     })
   </script>
 
-  <iframe id="supportMe" src="http://localhost:3000/customers/new" frameborder="0" overflow-x="hidden"; overflow-y= "scroll" style="position:fixed; left:70%; bottom:0px; z-index:1000; height:50px; width:260px; border:1px solid gray;"></iframe>
-
+  <iframe id="supportMe" src="http://localhost:3000/customers/new" frameborder="0" overflow-x="hidden"; overflow-y= "scroll" style="position:fixed; left:70%; bottom:0px; z-index:1000; height:40px; width:260px; border:1px solid gray;"></iframe>
 
 ###Tests
 
