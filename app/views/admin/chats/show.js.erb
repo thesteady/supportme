@@ -1,1 +1,16 @@
-$("#support-chat-window").html("<%= escape_javascript(render :partial => '/admin/chats/chat', :id=> 'data-chat' ) %>");
+// $(".support-chat-window").each( obj, function( key, value ) {
+//   alert( key + ": " + value );
+// });
+
+var unplaced = true;
+$(".support-chat-window").each(function(i, obj){
+  if ($(this).attr('id') === '' && unplaced) {
+    $(this).html("<%= escape_javascript(render :partial => '/admin/chats/chat', :id=> 'data-chat' ) %>");
+    unplaced = false;
+    $(this).attr({'id': "full"});
+  } else {
+
+  }
+});
+
+// alert($(".support-chat-window").last);
