@@ -13,6 +13,14 @@
       <%= f.submit "Send", class: "btn btn-success pull-right span3" %>
     <% end %>
   </div>
+
+  <div class='resolve-chat'>
+    <%= button_to 'Resolve Issue',
+        admin_chat_path(@chat),
+        method: :put,
+        class: 'btn btn-warning' %>
+  </div>
+  
 </div>
 
 <%= subscribe_to admin_chat_path(@chat) %>

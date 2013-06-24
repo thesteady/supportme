@@ -6,14 +6,26 @@ class Admin::ChatsController < ApplicationController
   end
 
   def show
-    customer ||= Customer.where(id: session[:customer_id]).first
+    require_customer
 
-    if customer
-      @chat = Chat.find(params[:id])
-      @chat.update_attributes(status: 'active') if @chat.status == 'waiting'
-      @messages = @chat.messages
-    else
-      redirect_to root_path
-    end
+    @chat = Chat.find(params[:id])
+    @chat.update_attributes(status: 'active') if @chat.status == 'waiting'
+    @messages = @chat.messages
+  end
+
+  def update
+    require_customer
+
+    @chat = Chat.find(params[:id])
+    @chat.update_attributes(status: 'resolved') if @chat.status == 'active'
+    flash[:notice] = 'Thanks for helping out!'
+    redirect_to admin_chats_path
+  end
+
+  private
+
+  def require_customer
+    customer ||= Customer.where(id: session[:customer_id]).first
+    redirect_to root_path if customer.nil?
   end
 end

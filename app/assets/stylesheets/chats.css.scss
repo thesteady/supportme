@@ -14,3 +14,12 @@
 #active-chats-list, #waiting-chats-list {
   list-style-type:none;
 }  
+ 
+.resolve-chat{
+  padding-top: 20px;
+  text-align: right;
+}
+
+#chat-input form#new_message {
+  margin-bottom: 30px;
+}

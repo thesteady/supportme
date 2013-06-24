@@ -43,10 +43,7 @@ describe 'Tech Support Helps' do
 
   describe 'start chatting with customer' do
     before(:each) do
-      visit "/customers/new"
-      fill_in :customer_name, with: "Mr. Goat"
-      fill_in :customer_email, with: "goat@farm.com"
-      click_link_or_button "Start Chat"
+      create_a_customer_chat
       login_user
       click_link "Chat #1"
     end
@@ -73,22 +70,23 @@ describe 'Tech Support Helps' do
 
   describe 'resolving a chat-issue' do
     before(:each) do
-      visit_page_with_an_active_chat
+      create_a_customer_chat
+      login_user
+      click_link "Chat #1"
     end
 
     context 'when the chat is finished and the issue is resolved' do
-      it 'lets me mark the issue is resolved' do
-        pending 'next step?'
-        click_link 'Chat #1'
-        click_button 'Resolve Issue'
-        #expect flash notice issue resolved
-        #expect to not have that chat on the page anywhere any more
-        #expect the status of that chat to be resolved
-      end
+      it 'lets me mark the issue is resolved', js: true do
+        click_link_or_button 'Resolve Issue'
+        expect(page).to have_selector('.alert'), 'Thanks for helping out!'
 
-      it 'no longer shows the chat in the list of waiting or in process customers' do
-        pending
-        #
+        within('div#active-chats') do
+          expect(page).to_not have_content('Chat #1')
+        end
+
+        within('div#waiting-chats') do
+          expect(page).to_not have_content('Chat #1')
+        end
       end
     end
   end
@@ -113,5 +111,12 @@ describe 'Tech Support Helps' do
     customer.chats.create(status: 'active')
     login_user
     # visit admin_chats_path
+  end
+
+  def create_a_customer_chat
+    visit "/customers/new"
+    fill_in :customer_name, with: "Mr. Goat"
+    fill_in :customer_email, with: "goat@farm.com"
+    click_link_or_button "Start Chat"
   end
 end

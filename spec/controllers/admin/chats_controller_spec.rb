@@ -66,4 +66,16 @@ describe Admin::ChatsController do
       end
     end
   end
+
+  describe 'POST update' do
+    before(:each) do
+      customer = Customer.create(name: "Mr. Goat", email: "goat@farm.com")
+      session[:customer_id] = customer.id
+    end
+
+    it 'assigns the chat variable' do
+      post :update, {id: chat.id}
+      expect(assigns(:chat)).to eq chat
+    end
+  end
 end
