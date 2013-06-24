@@ -4,6 +4,7 @@ describe UsersController do
   describe "#create" do
     it "redirects to chats_path when given valid params" do
       post :create, user: {
+        name: 'Mr. Goat',
         email: "goat@farm.com",
         password: "goats",
         password_confirmation: "goats"
@@ -15,6 +16,7 @@ describe UsersController do
 
     it "redirects to root_url when password and password confirmation don't match" do
       post :create, user: {
+        name: 'Mr. Goat',
         email: "goat@farm.com",
         password: "goats",
         password_confirmation: "goatsies"
@@ -26,11 +28,13 @@ describe UsersController do
 
     it "redirects to root_url when email has already been taken" do
       User.create!(
+        name: 'Mr. Goat',
         email: "goat@farm.com",
         password: "goatsies",
         password_confirmation: "goatsies"
         )
       post :create, user: {
+        name: 'Mr. Goat',
         email: "goat@farm.com",
         password: "goats",
         password_confirmation: "goats"
