@@ -6,9 +6,14 @@ class Admin::ChatsController < ApplicationController
   end
 
   def show
-    @chat = Chat.find(params[:id])
-    #should also update user_id attribute here... will require log in.
-    @chat.update_attributes(status: 'active') if @chat.status == 'waiting'
-    @messages = @chat.messages
+    customer ||= Customer.where(id: session[:customer_id]).first
+
+    if customer
+      @chat = Chat.find(params[:id])
+      @chat.update_attributes(status: 'active') if @chat.status == 'waiting'
+      @messages = @chat.messages
+    else
+      redirect_to root_path
+    end
   end
 end

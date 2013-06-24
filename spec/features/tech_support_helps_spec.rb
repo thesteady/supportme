@@ -43,8 +43,12 @@ describe 'Tech Support Helps' do
 
   describe 'start chatting with customer' do
     before(:each) do
-      visit_page_with_a_waiting_chat
-      click_link 'Chat #1'
+      visit "/customers/new"
+      fill_in :customer_name, with: "Mr. Goat"
+      fill_in :customer_email, with: "goat@farm.com"
+      click_link_or_button "Start Chat"
+      login_user
+      click_link "Chat #1"
     end
 
     it 'lets the user open a customer chat' do
@@ -57,6 +61,7 @@ describe 'Tech Support Helps' do
       click_link_or_button 'Send'
       within('#chat') do
         expect(page).to have_content('hello i am chatting now!')
+        save_and_open_page
         # expect(page).to have_selector('chat-author')
       end
 
@@ -109,6 +114,4 @@ describe 'Tech Support Helps' do
     login_user
     # visit admin_chats_path
   end
-
 end
-
