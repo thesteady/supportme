@@ -10,6 +10,7 @@
     <%= form_for Message.new, remote: true do |f| %>
       <%= f.text_field :content, class: "chat-input" %>
       <%= f.hidden_field :chat_id, value: @chat.id %>
+      <%= f.hidden_field :customer_id, value: @chat.customer_id %>
     <% end %>
   </div>
 </div>

@@ -202,6 +202,12 @@ h1{
   margin-bottom: -2px;
 }
 
+#chat-author{
+  font-weight: bold;
+  font-style: italic;
+  font-size: 90%; 
+}
+
 // CUSTOMER
 
 #customer-chat-time {
@@ -213,6 +219,10 @@ h1{
 #customer-chat-message {
   font-size: $font / 4.5;
   line-height: 1.2em;
+}
+
+#customer-chat-author {
+
 }
 
 .new_customer {

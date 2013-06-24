@@ -4,6 +4,7 @@ describe SessionsController do
   describe "#create" do
     def create_user
       User.create(
+        name: 'Mr. Goat',
         email: "goats@farm.com",
         password: "goats",
         password_confirmation: "goats"
@@ -13,6 +14,7 @@ describe SessionsController do
     it "logins a user when given valid params" do
       create_user
       post :create, {
+        name: 'Mr. Goat',
         email: "goats@farm.com",
         password: "goats",
       }
@@ -23,6 +25,7 @@ describe SessionsController do
 
     it "doesn't login a user when a user doesn't exist" do
       post :create, {
+        name: 'Mr. Goat',
         email: "goats@farm.com",
         password: "goats",
       }
@@ -34,6 +37,7 @@ describe SessionsController do
     it "doesn't login a user when a password is incorrect" do
       create_user
       post :create, {
+        name: 'Mr. Goat',
         email: "goats@farm.com",
         password: "goatsies",
       }
@@ -45,6 +49,7 @@ describe SessionsController do
     it "doesn't login a user when the email is incorrect" do
       create_user
       post :create, {
+        name: 'Mr. Goat',
         email: "goatsies@farm.com",
         password: "goats",
       }

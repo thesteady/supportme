@@ -9,6 +9,7 @@
     <%= form_for Message.new, remote: true do |f| %>
       <%= f.text_field :content, class: "chat-input" %>
       <%= f.hidden_field :chat_id, value: @chat.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.submit "Send", class: "btn btn-success pull-right span3" %>
     <% end %>
   </div>
