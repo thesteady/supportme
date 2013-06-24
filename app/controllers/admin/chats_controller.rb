@@ -1,8 +1,6 @@
 class Admin::ChatsController < ApplicationController
-  
-  before_filter :require_login
-
   def index
+    require_login
     @waiting_chats = Chat.where(status: 'waiting')
     @active_chats = Chat.where(status: 'active')
   end
