@@ -14,7 +14,7 @@ class Admin::ChatsController < ApplicationController
   end
 
   def update
-    require_customer
+    require_login
 
     @chat = Chat.find(params[:id])
     @chat.update_attributes(status: 'resolved') if @chat.status == 'active'
