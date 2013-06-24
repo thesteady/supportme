@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Tech Support Helps' do
-  
+
   describe 'going to the admin/support page' do
     context 'when there are no active customers waiting for help' do
       it 'gives a message that there are no customers' do
@@ -52,7 +52,7 @@ describe 'Tech Support Helps' do
       expect(page).to have_content('Hello Mr. Goat.')
     end
 
-    it 'lets the user chat with a customer and provides author names', js: true do
+    xit 'lets the user chat with a customer and provides author names', js: true do
       fill_in :message_content, with: 'hello i am chatting now!'
       click_link_or_button 'Send'
       within('#chat') do
