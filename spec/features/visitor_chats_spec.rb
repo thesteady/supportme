@@ -24,7 +24,7 @@ describe 'visitor views the home page' do
       visit '/'
       click_link 'Sign up'
       fill_in :name, with: 'MyName'
-      fill_in :email, with: 'what@what.com'
+      fill_in :email, with: 'example@example.com'
       fill_in :password, with: 'hello'
       fill_in :user_password_confirmation, with: 'hello'
       click_link_or_button 'Create account'

@@ -92,22 +92,22 @@ describe 'Tech Support Helps' do
   end
 
   def login_user
-    user = User.create(name: 'Gooaaat', email: 'yeaah@supportgoat.com', password: 'goats', password_confirmation: 'goats')
+    user = User.create(name: 'Gooaaat', email: 'example@example.com', password: 'goats', password_confirmation: 'goats')
     visit '/'
-    fill_in :email, with: 'yeaah@supportgoat.com'
+    fill_in :email, with: 'example@example.com'
     fill_in :password, with: 'goats'
     click_link_or_button 'Log in'
   end
 
   def visit_page_with_a_waiting_chat
-    customer = Customer.create( name: "Mr. Goat", email: "goat@farm.com" )
+    customer = Customer.create( name: "Mr. Goat", email: "example@example.com" )
     customer.chats.create
     login_user
     # visit admin_chats_path
   end
 
   def visit_page_with_an_active_chat
-    customer = Customer.create( name: "Mr. Goat", email: "goat@farm.com" )
+    customer = Customer.create( name: "Mr. Goat", email: "example@example.com" )
     customer.chats.create(status: 'active')
     login_user
     # visit admin_chats_path
@@ -116,7 +116,7 @@ describe 'Tech Support Helps' do
   def create_a_customer_chat
     visit "/customers/new"
     fill_in :customer_name, with: "Mr. Goat"
-    fill_in :customer_email, with: "goat@farm.com"
+    fill_in :customer_email, with: "example@example.com"
     click_link_or_button "Start Chat"
   end
 end

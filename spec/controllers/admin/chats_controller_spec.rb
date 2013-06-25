@@ -4,7 +4,7 @@ describe Admin::ChatsController do
 
   let(:chat) { Chat.create(customer_id: 1) }
   let(:user) { User.create(name: 'myrna',
-                           email: 'myrna@myrna.com',
+                           email: 'example@example.com',
                            password: 'myrna',
                            password_confirmation: 'myrna') }
 
