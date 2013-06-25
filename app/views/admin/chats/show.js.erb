@@ -1,1 +1,10 @@
-$("#support-chat-window").html("<%= escape_javascript(render :partial => '/admin/chats/chat', :id=> 'data-chat' ) %>");
+var unplaced = true;
+alert("Alert from show.js.erb");
+$(".support-chat-window").each(function(i, obj){
+  if ($(this).attr('id') === '' && unplaced) {
+    $(this).html("<%= escape_javascript(render :partial => '/admin/chats/chat', :id=> 'data-chat' ) %>");
+    unplaced = false;
+    $(this).attr({'id': "full"});
+  } else {
+  }
+});

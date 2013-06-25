@@ -1,7 +1,7 @@
 <div id='chatbox'>
   <h1>Chat #<%= @chat.id%></h1>
 
-  <ul id="chat">
+  <ul id="chat<%= @chat.id%>">
     <%= render partial: 'admin/chats/message', collection: @messages %>
   </ul>
 

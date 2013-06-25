@@ -1,18 +1,16 @@
 <div class='content'>
   <div class='support-chat-sidebar pull-left'>
     <h1>Chat List</h1>
-  
+
     <div id='active-chats'>
       <% if @active_chats.count == 0 %>
         <h4>No Active Chats.</h4>
       <% else %>
         <h4>You Are Working With:</h4>
       <% end %>
-
         <ul id='active-chats-list'>
           <%= render partial: '/admin/chats/active_chat', collection: @active_chats %>
         </ul>
-
     </div>
 
     <hr>
@@ -23,15 +21,26 @@
       <% else %>
         <h4># of Customers Waiting: <%= @waiting_chats.count %></h4>
       <% end %>
-
         <ul id='waiting-chats-list'>
           <%= render partial: '/admin/chats/waiting_chat', collection: @waiting_chats %>
         </ul>
-
     </div>
   </div>
-    
-    <div id='support-chat-window'>
-      <% render @chat if @chat.present? %>
-    </div>
+
+  <div class="admin-chats pull-right">
+    <% 3.times do |x| %>
+      <div id='' class="support-chat-window"></div>
+    <% end %>
+    <br><br>
+    <% 3.times do |x| %>
+      <div id='' class="support-chat-window"></div>
+    <% end %>
+  </div>
+
 </div>
+
+
+
+
+
+
