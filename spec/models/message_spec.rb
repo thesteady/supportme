@@ -7,7 +7,7 @@ describe Message do
     #   @message = customer.messages.create(content: 'hello', chat_id: 1)
     # end
 
-    let(:message){ Message.new(content: 'hello', chat_id: 1, customer_id: 1 ) }
+    let(:message){ Message.new( content: 'hello', chat_id: 1, author_id: 1, author_type: 'customer' ) }
 
     it 'is not valid without content' do
       message.content = nil
@@ -24,7 +24,6 @@ describe Message do
     end
 
     it 'has an author id and author type' do
-      # message.save
       expect(message.author_id).to eq 1
       expect(message.author_type).to eq 'customer'
     end
@@ -32,7 +31,7 @@ describe Message do
 
   describe 'creating from a user' do
     it 'converts user id into author id and type' do
-      pending
+      User.create(name: 'Mr. Goat', email: 'example@example.com', password: 'pass', password_confirmation: 'pass')
     end
   end
 

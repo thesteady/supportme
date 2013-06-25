@@ -6,5 +6,6 @@ class Customer < ActiveRecord::Base
   validates :name,  presence: true, uniqueness: true
 
   has_many :chats
-  has_many :messages, as: :author
+  has_many :messages, as: :author #, through chats........
+
 end

@@ -27,7 +27,7 @@ describe CustomersController do
 
     it "finds a customer when it already exists" do
       Customer.create(
-        name: "Mr. Goar",
+        name: "Mr. Goat",
         email: "example@example.com"
         )
 
