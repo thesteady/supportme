@@ -1,12 +1,12 @@
 class Admin::ChatsController < ApplicationController
   def index
-    require_login
+    # require_login
     @waiting_chats = Chat.where(status: 'waiting')
     @active_chats = Chat.where(status: 'active').order("updated_at ASC")
   end
 
   def show
-    require_customer
+    # require_customer
 
     @chat = Chat.find(params[:id])
     @chat.update_attributes(status: 'active') if @chat.status == 'waiting'
