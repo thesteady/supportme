@@ -11,5 +11,5 @@ class User < ActiveRecord::Base
   validates :password, presence: true, confirmation: true, on: :create
 
   has_many :chats
-  has_many :messages, through: :chats
+  has_many :messages, as: :author
 end

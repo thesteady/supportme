@@ -2,7 +2,12 @@ require'spec_helper'
 
 describe Message do
   describe 'validations' do
-    let(:message){ Message.new(content: 'hello', chat_id: 1, customer_id: 1) }
+    # before(:each) do
+    #   customer = Customer.create(name: 'Mr. Goat', email: 'example@example.com')
+    #   @message = customer.messages.create(content: 'hello', chat_id: 1)
+    # end
+
+    let(:message){ Message.new(content: 'hello', chat_id: 1, customer_id: 1 ) }
 
     it 'is not valid without content' do
       message.content = nil
@@ -17,29 +22,34 @@ describe Message do
       message.chat_id = nil
       expect(message).to_not be_valid
     end
+
+    it 'has an author id and author type' do
+      # message.save
+      expect(message.author_id).to eq 1
+      expect(message.author_type).to eq 'customer'
+    end
   end
 
-  describe 'author id validation' do
+  describe 'creating from a user' do
+    it 'converts user id into author id and type' do
+      pending
+    end
+  end
+
+  describe 'creating from a customer' do
+    it 'converts customer id into author id and type' do
+      pending
+    end
+  end
+
+  describe 'author id and type validation' do
     let(:message) { Message.new( content: 'hello', chat_id: 1 ) }
 
-    it 'is valid with a customer id' do
-      message.customer_id = 1
-      expect(message).to be_valid
-    end
+    it 'is not valid without an author id AND author type'
+    it 'is valid only with a type of customer or user'
+  end
 
-    it 'is valid with a user id' do
-      message.user_id = 1
-      expect(message).to be_valid
-    end
-
-    it 'is not valid without a customer or user id' do
-      expect(message).to_not be_valid
-    end
-
-    it 'is not valid with a customer id AND a user id' do
-      message.user_id = 1
-      message.customer_id = 42
-      expect(message).to_not be_valid
-    end
+  describe 'message author name' do
+    it 'has one whether author is customer or user'
   end
 end

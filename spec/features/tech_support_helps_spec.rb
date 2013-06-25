@@ -53,12 +53,11 @@ describe 'Tech Support Helps' do
       expect(page).to have_content('Hello Mr. Goat.')
     end
 
-    xit 'lets the user chat with a customer and provides author names', js: true do
+    it 'lets the user chat with a customer and provides author names', js: true do
       fill_in :message_content, with: 'hello i am chatting now!'
       click_link_or_button 'Send'
       within('#chat') do
         expect(page).to have_content('hello i am chatting now!')
-        save_and_open_page
         # expect(page).to have_selector('chat-author')
       end
 
