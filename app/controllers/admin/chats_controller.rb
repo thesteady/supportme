@@ -6,8 +6,8 @@ class Admin::ChatsController < ApplicationController
   end
 
   def show
-    require_customer
-
+    #require_customer
+    
     @chat = Chat.find(params[:id])
     @chat.update_attributes(status: 'active') if @chat.status == 'waiting'
     @messages = @chat.messages
