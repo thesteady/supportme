@@ -1,12 +1,18 @@
 function unplaced(){
-  true;
+  var chat_id = "<%= params['id'] %>";
+  var size = $("#" + chat_id).size();
+  if (size === 1){
+    return false;
+  } else {
+    return true;
+  }
 }
 
 $(".support-chat-window").each(function(i, obj){
-  if ($(this).attr('id') === '' && unplaced) {
+  if ($(this).attr('id') === '' && unplaced()) {
     $(this).html("<%= escape_javascript(render :partial => '/admin/chats/chat', :id=> 'data-chat' ) %>");
-    unplaced = false;
-    $(this).attr({'id': "full"});
+    $(this).attr({'id': "<%= params['id'] %>"});
   } else {
   }
 });
+
