@@ -4,7 +4,7 @@ describe Admin::ChatsController do
 
   let(:chat) { Chat.create(customer_id: 1) }
   let(:user) { User.create(name: 'myrna',
-                           email: 'myrna@myrna.com',
+                           email: 'example@example.com',
                            password: 'myrna',
                            password_confirmation: 'myrna') }
 
@@ -52,7 +52,11 @@ describe Admin::ChatsController do
       end
 
       it 'assigns the messages variable' do
-        message = chat.messages.create(content: 'hello', customer_id: chat.customer_id)
+        message = chat.messages.create(
+          content: 'hello',
+          author_id: chat.customer_id,
+          author_type: 'Customer'
+          )
         get :show, id: chat.id
         expect(assigns(:messages)).to eq([message])
       end
@@ -60,6 +64,7 @@ describe Admin::ChatsController do
 
     context 'when a customer doesn\'t exist' do
       it 'redirects to root_path when the customer doesn\'t exist' do
+        pending
         get :show, id: chat.id
         expect(response).to be_redirect
         expect(response).to redirect_to root_path

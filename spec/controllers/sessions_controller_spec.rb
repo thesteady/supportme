@@ -5,7 +5,7 @@ describe SessionsController do
     def create_user
       User.create(
         name: 'Mr. Goat',
-        email: "goats@farm.com",
+        email: "example@example.com",
         password: "goats",
         password_confirmation: "goats"
         )
@@ -15,7 +15,7 @@ describe SessionsController do
       create_user
       post :create, {
         name: 'Mr. Goat',
-        email: "goats@farm.com",
+        email: "example@example.com",
         password: "goats",
       }
       expect(response).to be_redirect
@@ -26,7 +26,7 @@ describe SessionsController do
     it "doesn't login a user when a user doesn't exist" do
       post :create, {
         name: 'Mr. Goat',
-        email: "goats@farm.com",
+        email: "example@example.com",
         password: "goats",
       }
       expect(response).to be_redirect
@@ -38,7 +38,7 @@ describe SessionsController do
       create_user
       post :create, {
         name: 'Mr. Goat',
-        email: "goats@farm.com",
+        email: "example@example.com",
         password: "goatsies",
       }
       expect(response).to be_redirect
@@ -50,7 +50,7 @@ describe SessionsController do
       create_user
       post :create, {
         name: 'Mr. Goat',
-        email: "goatsies@farm.com",
+        email: "another_example@example.com",
         password: "goats",
       }
       expect(response).to be_redirect

@@ -10,7 +10,7 @@ describe HomeController do
 
     it "redirects to chats_path when a current user exists" do
       user = User.create(
-        email: "goats@farm.com",
+        email: "example@example.com",
         password: "goats",
         password_confirmation: "goats"
         )
