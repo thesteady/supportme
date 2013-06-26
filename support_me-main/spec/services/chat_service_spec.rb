@@ -16,7 +16,6 @@ describe ChatService do
       chat_id = 4
       status = 'active'
       chat = ChatService.update_status(chat_id, status)
-      puts chat.inspect
 
       expect(chat.status).to eq 'active'
     end
