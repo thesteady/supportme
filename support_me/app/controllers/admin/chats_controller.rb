@@ -7,9 +7,13 @@ class Admin::ChatsController < ApplicationController
 
   def show
     # require_customer
+    @chat = ChatService.fetch(params[:id])
+    # @chat = Chat.find(params[:id])
 
-    @chat = Chat.find(params[:id])
-    @chat.update_attributes(status: 'active') if @chat.status == 'waiting'
+    #needs to post to chatservice with the status
+      ChatService.update_status(chat_id, status) if status == 'waiting'
+
+    # @chat.update_attributes(status: 'active') if @chat.status == 'waiting'
     @messages = @chat.messages
   end
 

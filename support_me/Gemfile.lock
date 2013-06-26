@@ -207,6 +207,7 @@ DEPENDENCIES
   capybara
   capybara-webkit
   coffee-rails (~> 3.2.1)
+  faraday
   jquery-rails
   launchy
   private_pub

@@ -19,15 +19,16 @@ describe CustomersController do
       }
 
       expect(response).to be_redirect
-      expect(response).to redirect_to admin_chat_path(Chat.first)
+      # expect(response).to redirect_to admin_chat_path(Chat.first)
 
+      expect(response).to redirect_to admin_chat_path(1)
       result = Customer.count
       expect(result).to eq (count + 1)
     end
 
     it "finds a customer when it already exists" do
       Customer.create(
-        name: "Mr. Goar",
+        name: "Mr. Goat",
         email: "goats@farm.com"
         )
 
@@ -39,7 +40,9 @@ describe CustomersController do
       }
 
       expect(response).to be_redirect
-      expect(response).to redirect_to admin_chat_path(Chat.first)
+      # expect(response).to redirect_to admin_chat_path(Chat.first)
+      expect(response).to redirect_to admin_chat_path(1)
+
 
       result = Customer.count
       expect(result).to eq (count)
