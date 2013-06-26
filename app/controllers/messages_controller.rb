@@ -1,7 +1,7 @@
 class MessagesController  < ApplicationController
   def create
     @message = Message.create(params[:message])
-    
+
     @chat = @message.chat
 
     respond_to do |format|
