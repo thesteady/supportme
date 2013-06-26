@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   end
 
   def create
-    customer = Customer.first_or_create(params[:customer])
+    customer = Customer.find_or_create_by_name_and_email(params[:customer])
 
     if customer.save
       session[:customer_id] = customer.id      

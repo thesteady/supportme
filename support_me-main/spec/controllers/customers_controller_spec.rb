@@ -15,7 +15,7 @@ describe CustomersController do
 
       post :create, customer: {
         name: "Mr. Goat",
-        email: "goat@gfarm.com"
+        email: "example@example.com"
       }
 
       expect(response).to be_redirect
@@ -29,14 +29,14 @@ describe CustomersController do
     it "finds a customer when it already exists" do
       Customer.create(
         name: "Mr. Goat",
-        email: "goats@farm.com"
+        email: "example@example.com"
         )
 
       count = Customer.count
 
       post :create, customer: {
         name: "Mr. Goat",
-        email: "goat@gfarm.com"
+        email: "example@example.com"
       }
 
       expect(response).to be_redirect
@@ -66,7 +66,7 @@ describe CustomersController do
       count = Customer.count
 
       post :create, customer: {
-        email: "goat@farm.com"
+        email: "example@example.com"
       }
 
       result = Customer.count
