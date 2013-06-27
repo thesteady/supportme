@@ -2,7 +2,7 @@
   <div id='chatbox'>
     <h1>Demo Chat</h1>
 
-    <ul id="chat">
+    <ul id="chat<%= @chat.id %>" class="chat_box">
       <%= render @messages %>
     </ul>
 
@@ -19,3 +19,30 @@
 </div>
 
 <%= subscribe_to admin_chat_path(@chat) %>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+  <script>
+    var inIframe = false;
+
+    var iframeClicker = function(){
+      $('iframe[src^="http://localhost:3000"]')
+        .bind('mouseover', function(){
+          console.log('entered iframe');
+          inIframe = true;
+          if ( inIframe ) { $('#supportMe').css({height: "260"}); }
+        })
+        .bind('mouseout', function(){
+          console.log('left iframe');
+          inIframe = false;
+          if ( inIframe == false ) { $('#supportMe').css({height: "40"}); }
+        });
+      };
+    ;
+
+    $(document).ready(function(){
+      iframeClicker()
+    })
+  </script>
+
+  <iframe id="supportMe" src="http://localhost:3000/customers/new" frameborder="0" overflow-x="hidden"; overflow-y= "scroll" style="position:fixed; left:70%; bottom:0px; z-index:1000; height:40px; width:260px; border:1px solid gray;"></iframe>

@@ -1,5 +1,5 @@
 <% publish_to admin_chat_path(@chat) do %>
-  $("#chat<%= @chat.id%>").append("<%= escape_javascript render @message %>");
+  $("#chat").append("<%= escape_javascript render @message %>");
   $("#new_message")[0].reset();
 <% end %>
 

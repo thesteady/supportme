@@ -20,6 +20,26 @@
   list-style-type:none;
 }
 
+.chat_box{
+  list-style-type:none;
+}
+
+.admin_chat_box{
+  height: 310px;
+  width: 270px;
+  list-style-type:none;
+  border: 2px solid gray;
+  border-radius: 20px;
+  background-color: white;
+  padding: 5px;
+}
+
+.admin_chat_content{
+  height: 150px;
+  overflow: auto;
+  padding: 0px;
+}
+
 .resolve-chat{
   padding-top: 20px;
   text-align: right;

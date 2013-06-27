@@ -11,6 +11,12 @@
   line-height: 1.2em;
 }
 
+#chat-message{
+  list-style-type:none;
+  padding: 0px;
+  margin: 0px;
+}
+
 @mixin box-border {
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -205,7 +211,11 @@ h1{
 #chat-author{
   font-weight: bold;
   font-style: italic;
-  font-size: 90%; 
+  font-size: 90%;
+}
+
+.admin_button{
+  display: inline;
 }
 
 // CUSTOMER

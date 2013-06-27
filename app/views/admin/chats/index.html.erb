@@ -29,16 +29,29 @@
 
   <div class="admin-chats pull-right">
     <% 3.times do |x| %>
-      <div id='' class="support-chat-window"></div>
+      <div id='empty' class="support-chat-window"></div>
     <% end %>
     <br><br>
     <% 3.times do |x| %>
-      <div id='' class="support-chat-window"></div>
+      <div id='empty' class="support-chat-window"></div>
     <% end %>
   </div>
 
 </div>
 
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var active_chats = [];
+    <% @active_chats.each do |chat| %>
+      active_chats.push("<%= chat.id %>");
+    <% end %>
+
+    $.each(active_chats, function(index, value){
+      $("#active_chat_links_"+value).trigger('click');
+    });
+  });
+</script>
 
 
 
