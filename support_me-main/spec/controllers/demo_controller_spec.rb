@@ -5,13 +5,15 @@ describe DemoController do
     it "returns http success" do
       get :create
       expect(response).to be_redirect
-      expect(response).to redirect_to demo_path(1)
     end
   end
 
   describe '#show' do
     it "displays a demo chat" do
-      chat = Chat.create(customer_id: 1)
+      
+      chat = NewChat.new(customer_id: 1, id: 2)
+      ChatService.stub(create_chat: chat)
+
       get :show, id: chat.id
       expect(response).to be_ok
     end

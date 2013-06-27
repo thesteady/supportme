@@ -1,22 +1,26 @@
 class Admin::ChatsController < ApplicationController
   def index
     # require_login
+    #will become fetches
     @waiting_chats = Chat.where(status: 'waiting')
     @active_chats = Chat.where(status: 'active').order("updated_at ASC")
   end
 
   def show
-    @chat = ChatService.fetch(params[:id])
-    #require_customer
-    ChatService.update_status(chat_id, status) if status == 'waiting'
-    @messages = @chat.messages
+    chatservice = ChatService.new(params[:id])
+    @chat = chatservice.fetch
+
+    chatservice.update_status('active') if @chat.status == 'waiting'
+    chatservice.fetch_messages
   end
 
   def update
     require_login
 
-    @chat = Chat.find(params[:id])
-    @chat.update_attributes(status: 'resolved') if @chat.status == 'active'
+    chatservice = ChatService.new(params[:id])
+    @chat = chatservice.fetch
+    chatservice.update_status('resolved') if @chat.status == 'active'
+
     flash[:notice] = 'Thanks for helping out!'
     redirect_to admin_chats_path
   end

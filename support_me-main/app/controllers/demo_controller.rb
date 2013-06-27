@@ -4,12 +4,12 @@ class DemoController < ApplicationController
                                  name: 'Demo Customer',
                                  email: 'demo_customer@supportme.com'
                                 )
-    chat = customer.chats.create
+    chat = ChatService.create(customer.id)
     redirect_to demo_path(chat.id)
   end
 
   def show
-    @chat = Chat.find(params[:id])
-    @messages = @chat.messages
+    chatservice = ChatService.new(params[:id])
+    @messages = chatservice.fetch_messages
   end
 end

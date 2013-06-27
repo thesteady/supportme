@@ -1,49 +1,57 @@
 require 'net/http'
 
 class ChatService
-
-  def create(customer_id)
-   
-    #make class method, call create_chat
-   
-   
+  def self.create(customer_id)
     data = {"customer_id" => customer_id}
-
-    connection = Faraday.new("http://localhost:3000")
-    response = connection.post("/chats", data)
-
-    params = JSON.parse(response.body)
-
-    NewChat.new(params)
+    NewChat.new  post("/chats", data)
   end
 
-  def self.fetch(chat_id)
-    connection = Faraday.new("http://localhost:3000")
-    response = connection.get("/chats/#{chat_id}")
-
-    params = JSON.parse(response.body)
-
-    NewChat.new(params)
+  def self.connection
+    @connection ||= Faraday.new("http://localhost:3000")
   end
 
-  def self.update_status(chat_id, status)
+  def self.post(path, data)
+    response = connection.post(path, data)
+    JSON.parse(response.body)
+  end
+
+  def self.get(path)
+    response = connection.get(path)
+    JSON.parse(response.body)
+  end
+
+  def self.put(path, data)
+    response = connection.put(path, data)
+    JSON.parse(response.body)
+  end
+
+  attr_reader :chat_id
+
+  def initialize(chat_id)
+    @chat_id = chat_id
+  end
+
+   def fetch
+    response = ChatService.get("/chats/#{chat_id}")
+    NewChat.new response
+  end
+
+  def update_status(status)
     data = {"status" => status}
-   
-    connection = Faraday.new "http://localhost:3000"
-    response = connection.put "/chats/#{chat_id}", data
-   
-    params = JSON.parse(response.body)
-    NewChat.new(params)
+    response = ChatService.put("/chats/#{chat_id}", data)
+    NewChat.new(response)
   end
 
-  def self.create_message(message_params)
-    chat_id = message_params["chat_id"] || message_params["message"]["chat_id"]
-    connection = Faraday.new "http://localhost:3000"
-    
-    post_uri = "/chats/#{chat_id}/messages"
-    response = connection.post(post_uri, message_params)
-    
-    params = JSON.parse(response.body)
-    NewMessage.new(params)
+  def create_message(message_params)
+    path = "/chats/#{chat_id}/messages"
+    response = ChatService.post(path, message_params)
+    NewMessage.new(response)
   end
+
+  def fetch_messages
+    path = "/chats/#{chat_id}/messages"
+    response = ChatService.get(path)
+    response.map {|message| NewMessage.new(message)}
+  end
+
 end

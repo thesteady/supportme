@@ -1,11 +1,13 @@
-<% publish_to admin_chat_path(@chat) do %>
-  $("#chat<%= @chat.id%>").append("<%= escape_javascript render @message %>");
+<% publish_to admin_chat_path(@message.chat_id) do %>
+  $("#chat<%= @message.chat_id%>").append("<%= escape_javascript render @message %>");
   $("#new_message")[0].reset();
 <% end %>
 
 
+//fix this one too?
+
 <% publish_to admin_chat_path(@chat) do %>
-  $("#chat<%= @chat.id%>").append("<%= escape_javascript render partial: 'admin/chats/message', collection: @messages %>");
+  $("#chat<%= @chat_id%>").append("<%= escape_javascript render partial: 'admin/chats/message', collection: @messages %>");
   $("#new_message")[0].reset();
   $("body").scrollTop( $("body")[0].scrollHeight );
 <% end %>

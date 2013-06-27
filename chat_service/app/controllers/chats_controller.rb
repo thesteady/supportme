@@ -20,9 +20,4 @@ class ChatsController < ApplicationController
 
     render json: @chat
   end
-
 end
-
-#get all messages for chat id
-#post new message for chat id
-#do i want to return all parts of the object?
