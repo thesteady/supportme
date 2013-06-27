@@ -20,4 +20,21 @@ describe ChatService do
       expect(chat.status).to eq 'active'
     end
   end
+
+  describe 'create message' do
+    it 'creates a new message for a chat' do
+      params = {"message" => {
+                                "author_id" => "1",
+                                "author_type" => 'User',
+                                "chat_id" => "1",
+                                "content" => 'wheres the goats?'}
+                              }
+      
+      result = ChatService.create_message(params)
+      expect(result.author_id).to eq 1
+      expect(result.author_type).to eq 'User'
+      expect(result.chat_id).to eq 1 
+      expect(result.content).to eq 'wheres the goats?'
+    end
+  end
 end

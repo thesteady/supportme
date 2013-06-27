@@ -34,12 +34,12 @@ describe MessagesController do
   describe 'POST create' do
     it 'creates a new messages when given valid params' do
       expect{
-        post :create, { 
+        post :create, {message: { 
           author_id: 1,
           author_type: "Customer",
           chat_id: chat.id,
           content: "I love goats in the winter."
-        }
+        }}
       }.to change(Message, :count).by(1)
 
 
@@ -53,12 +53,12 @@ describe MessagesController do
     end
 
     it 'returns json' do
-      post :create, { 
+      post :create, { message:{
           author_id: 1,
           author_type: "Customer",
           chat_id: chat.id,
           content: "I love goats in the winter."
-        }
+        }}
         
       expect(response.header["Content-Type"]).to include "application/json"
     end
