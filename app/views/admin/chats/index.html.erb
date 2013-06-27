@@ -50,6 +50,13 @@
     $.each(active_chats, function(index, value){
       $("#active_chat_links_"+value).trigger('click');
     });
+
+    $(".admin-chats").on('click', ".resolve_issue", function(){
+      var chat_id = $(this).attr("id");
+      $("#inner_chatbox_"+chat_id).remove();
+      $("#active_chat_links_"+chat_id).remove();
+      $("#outer_chatbox_"+chat_id).attr("id", "empty");
+    });
   });
 </script>
 

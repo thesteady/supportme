@@ -1,4 +1,4 @@
-<div id='<%= @chat.id%>' class="admin_chat_box">
+<div id='inner_chatbox_<%= @chat.id%>' class="admin_chat_box">
 
   <h4>Chat #<%= @chat.id%></h4>
   <div class="admin_chat_content">
@@ -17,10 +17,14 @@
     <% end %>
     <%= button_to 'Resolve Issue',
         admin_chat_path(@chat),
+        id: @chat.id,
+        remote: true,
         method: :put,
-        class: 'btn btn-warning admin_button' %>
+        class: 'btn btn-warning admin_button resolve_issue' %>
   </div>
 
 </div>
 
 <%= subscribe_to admin_chat_path(@chat) %>
+
+
