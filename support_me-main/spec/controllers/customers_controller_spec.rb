@@ -19,47 +19,31 @@ describe CustomersController do
       }
 
       expect(response).to be_redirect
-      # expect(response).to redirect_to admin_chat_path(Chat.first)
-
-      expect(response).to redirect_to admin_chat_path(1)
       result = Customer.count
       expect(result).to eq (count + 1)
     end
 
     it "finds a customer when it already exists" do
-      Customer.create(
-        name: "Mr. Goat",
-        email: "example@example.com"
-        )
-
-      count = Customer.count
-
-      post :create, customer: {
-        name: "Mr. Goat",
-        email: "example@example.com"
-      }
+      Customer.create(name: "Mr. Goat", email: "example@example.com")
+      expect{
+        post :create, customer: {
+          name: "Mr. Goat",
+          email: "example@example.com"
+        }
+      }.to change(Customer, :count).by(0)
 
       expect(response).to be_redirect
-      # expect(response).to redirect_to admin_chat_path(Chat.first)
-      expect(response).to redirect_to admin_chat_path(1)
-
-
-      result = Customer.count
-      expect(result).to eq (count)
     end
 
     it "redirects to the new_customer path when the email is missing" do
-      count = Customer.count
-
-      post :create, customer: {
-        name: "Mr. Goat"
-      }
-
-      result = Customer.count
+      expect{
+        post :create, customer: {
+          name: "Mr. Goat"
+        }
+      }.to change(Customer, :count).by(0)
 
       expect(response).to be_redirect
       expect(response).to redirect_to new_customer_path
-      expect(result).to eq (count)
     end
 
     it "redirects to the new_customer path when the name is missing" do

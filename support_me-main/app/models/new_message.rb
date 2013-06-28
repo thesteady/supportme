@@ -1,2 +1,0 @@
-class NewMessage < OpenStruct
-end

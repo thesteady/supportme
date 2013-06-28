@@ -48,17 +48,28 @@ describe ChatService do
     end
   end
 
+  describe '.fetch' do
+    it 'returns the info given a valid chat id' do
+      #how do we fake a chat from the other service?
+      #USE VCR!!!!
+      chat_id = 1
+      chatservice = ChatService.new(chat_id)
+      response = chatservice.fetch
+      expect(response).to be_kind_of NewChat
+    end
+  end
+
   context "#update_status" do
     it "updates a chat status" do
       create_chat(1)
 
       service = ChatService.new(1)
       result  = service.update_status("active")
-
       expect(result.class).to eq NewChat
       expect(result.status).to eq "active"
     end
   end
+
 
   context "#create_message" do
     it "creates a message" do

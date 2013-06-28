@@ -1,4 +1,11 @@
 class ChatsController < ApplicationController
+  
+  def index
+    @chats = Chat.where(status: ['active', 'waiting'])
+
+    render json: @chat
+  end
+
   def create
     @chat = Chat.new
     @chat.customer_id = params.permit(:customer_id)[:customer_id]

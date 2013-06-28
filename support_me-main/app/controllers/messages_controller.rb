@@ -1,7 +1,7 @@
 class MessagesController  < ApplicationController
   def create
     #check this!
-    chatservice = ChatService.new(params[:chat_id])
+    chatservice = ChatService.new(params[:message][:chat_id])
     @message = chatservice.create_message(params)
     # @message = ChatService.create_message(params)
 

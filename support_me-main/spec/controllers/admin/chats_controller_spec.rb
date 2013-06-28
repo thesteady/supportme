@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::ChatsController do
 
-  let(:chat) { Chat.create(customer_id: 1) }
+  let(:chat) { Chat.new(id: 1, customer_id: 1, status: "waiting", user_id: nil) }
   let(:user) { User.create(name: 'myrna',
                            email: 'example@example.com',
                            password: 'myrna',
@@ -21,7 +21,7 @@ describe Admin::ChatsController do
 
     it 'assigns the waiting chats variable' do
       get :index
-      expect(assigns(:waiting_chats)).to eq([chat])
+      expect(assigns(:waiting_chats).first.id).to eq(chat.id)
     end
 
     it 'assigns the active chats variable' do

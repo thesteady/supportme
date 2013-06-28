@@ -1,10 +1,21 @@
 require 'net/http'
 
 class ChatService
+
   attr_reader :chat_id
 
   def initialize(chat_id)
     @chat_id = chat_id
+  end
+
+  def self.create(customer_id)
+    data = {"customer_id" => customer_id}
+    Chat.new  post("/chats", data)
+  end
+
+  def self.get_open_chats
+    response = get("/chats")
+    response.map { |chat| Chat.new(chat) }
   end
 
   def self.connection
@@ -26,35 +37,26 @@ class ChatService
     JSON.parse(response.body)
   end
 
-  def create(customer_id)
-    data     = { "customer_id" => customer_id }
-    path     = "/chats"
-    response = ChatService.post(path, data)
-    NewChat.new(response)
-  end
-
   def fetch
-    path     = "/chats/#{chat_id}"
-    response = ChatService.get(path)
-    NewChat.new(response)
+    response = ChatService.get("/chats/#{chat_id}")
+    Chat.new response
   end
 
   def update_status(status)
-    data     = { "status" => status }
-    path     = "/chats/#{chat_id}"
-    response = ChatService.put(path, data)
-    NewChat.new(response)
+    data = {"status" => status}
+    response = ChatService.put("/chats/#{chat_id}", data)
+    Chat.new(response)
   end
 
   def create_message(message_params)
     path     = "/chats/#{chat_id}/messages"
     response = ChatService.post(path, message_params)
-    NewMessage.new(response)
+    Message.new(response)
   end
 
   def fetch_messages
     path     = "/chats/#{chat_id}/messages"
     response = ChatService.get(path)
-    response.map { |message| NewMessage.new(message) }
+    response.map {|message| Message.new(message)}
   end
 end

@@ -1,9 +1,21 @@
 class Admin::ChatsController < ApplicationController
   def index
-    # require_login
-    #will become fetches
-    @waiting_chats = Chat.where(status: 'waiting')
-    @active_chats = Chat.where(status: 'active').order("updated_at ASC")
+    #is this the best way to to do this? one API call, then two selects?
+    #or two API calls? is there a way to split the chats in one run?
+    chats = ChatService.get_open_chats
+    @waiting_chats = chats.select { |chat| chat.status == 'waiting' }
+    @active_chats = chats.select { |chat| chat.status == 'active' }
+
+    # @active_chats = []
+    # @waiting_chats = []
+
+    # chats.each do |chat|
+    #   @active_chats << chat if chat.status == 'active'
+    #   @waiting_chats << chat if chat.status == 'waiting'
+    # end
+    
+    # @active_chats
+    # @waiting_chats
   end
 
   def show

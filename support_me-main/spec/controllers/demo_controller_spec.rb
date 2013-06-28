@@ -11,7 +11,7 @@ describe DemoController do
   describe '#show' do
     it "displays a demo chat" do
       
-      chat = NewChat.new(customer_id: 1, id: 2)
+      chat = Chat.new(customer_id: 1, id: 2)
       ChatService.stub(create_chat: chat)
 
       get :show, id: chat.id
