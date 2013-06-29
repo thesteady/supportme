@@ -3,7 +3,7 @@ class ChatService
 
   attr_reader :chat_id
 
-  def initialize(chat_id)
+  def initialize(chat_id = 0)
     @chat_id = chat_id
   end
 
