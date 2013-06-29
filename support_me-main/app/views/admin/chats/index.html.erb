@@ -29,16 +29,48 @@
 
   <div class="admin-chats pull-right">
     <% 3.times do |x| %>
-      <div id='' class="support-chat-window"></div>
+      <div id='empty' class="support-chat-window"></div>
     <% end %>
     <br><br>
     <% 3.times do |x| %>
-      <div id='' class="support-chat-window"></div>
+      <div id='empty' class="support-chat-window"></div>
     <% end %>
   </div>
 
 </div>
 
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var active_chats = [];
+    <% @active_chats.each do |chat| %>
+      active_chats.push("<%= chat.id %>");
+    <% end %>
+
+    $.each(active_chats, function(index, value){
+      $("#active_chat_links_"+value).trigger('click');
+    });
+
+    $(".admin-chats").on('click', ".resolve_issue", function(){
+      var chat_id = $(this).attr("id");
+      $("#inner_chatbox_"+chat_id).remove();
+      $("#active_chat_links_"+chat_id).remove();
+      $("#waiting_chat_links_"+chat_id).remove();
+      $("#outer_chatbox_"+chat_id).attr("id", "empty");
+      $.ajax({
+        url: '/admin/chats/'+chat_id,
+        type: 'PUT',
+        success: function(data) {
+        }
+      });
+    });
+
+    $("#waiting-chats").on('click', ".waiting", function(){
+      var waiting_chat_id = $(this).attr("id");
+      $("#waiting_chat_links_"+waiting_chat_id)
+    });
+  });
+</script>
 
 
 
