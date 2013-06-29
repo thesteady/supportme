@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe ChatService do
   def create_chat(id)
-    customer_id  = 5
-    ChatService.create_chat(customer_id)
+    customer_id = 5
+    service     = ChatService.new(id)
+    service.create_chat(customer_id)
   end
 
   context "#initialize" do
@@ -23,24 +24,43 @@ describe ChatService do
     end
   end
 
-  context ".create" do
+  context "#create_chat" do
     it "creates a chat" do
+      chat_id     = 1
       customer_id = 5
-      new_chat = ChatService.create_chat(customer_id)
-      
-      expect(new_chat.customer_id).to eq customer_id
-      expect(new_chat.status).to eq 'waiting'
+
+      service = ChatService.new(chat_id)
+      result  = service.create_chat(5)
+
+      expect(result.class).to eq Chat
+      expect(result.customer_id).to eq customer_id
+      expect(result.status).to eq 'waiting'
     end
   end
 
-  describe '.fetch_chat' do
-    it 'returns the info given a valid chat id' do
-      #how do we fake a chat from the other service?
-      #USE VCR!!!!
-      chat = create_chat(1)
-      chatservice = ChatService.new(chat.id)
-      response = chatservice.fetch_chat
-      expect(response).to be_kind_of Chat
+  describe '#fetch_chat' do
+    it 'returns a chat' do
+      chat    = create_chat(1)
+      service = ChatService.new(chat.id)
+      result  = service.fetch_chat
+
+      expect(result.class).to eq Chat
+      expect(result.id).to eq chat.id
+      expect(result.customer_id).to eq chat.customer_id
+    end
+  end
+
+  describe '#fetch_chats' do
+    it 'returns all the chats' do
+      service       = ChatService.new(1)
+      original_size = service.fetch_chats.size
+      chat          = create_chat(1)
+
+      result = service.fetch_chats
+
+      expect(result.class).to eq Array
+      expect(result.size).to eq original_size + 1
+      expect(result.last.id).to eq chat.id
     end
   end
 
@@ -54,7 +74,6 @@ describe ChatService do
       expect(result.status).to eq "active"
     end
   end
-
 
   context "#create_message" do
     it "creates a message" do

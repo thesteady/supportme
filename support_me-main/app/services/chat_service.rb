@@ -1,6 +1,5 @@
-require 'net/http'
-
 class ChatService
+  extend Client
 
   attr_reader :chat_id
 
@@ -8,13 +7,25 @@ class ChatService
     @chat_id = chat_id
   end
 
+  def create_chat(customer_id)
+    path        = "/chats"
+    chat_params = { "customer_id" => customer_id }
+    response    = ChatService.post(path, chat_params)
+    Chat.new(response)
+  end
+
   def fetch_chat
     response = ChatService.get("/chats/#{chat_id}")
-    Chat.new response
+    Chat.new(response)
+  end
+
+  def fetch_chats
+    response = ChatService.get("/chats")
+    response.map { |chat| Chat.new(chat) }
   end
 
   def update_status(status)
-    data = {"status" => status}
+    data     = { "status" => status }
     response = ChatService.put("/chats/#{chat_id}", data)
     Chat.new(response)
   end
@@ -28,41 +39,6 @@ class ChatService
   def fetch_messages
     path     = "/chats/#{chat_id}/messages"
     response = ChatService.get(path)
-    response.map {|message| Message.new(message)}
-  end
-
-
-
-
-  def self.create_chat(customer_id)
-    data = {"customer_id" => customer_id}
-    Chat.new  post("/chats", data)
-  end
-
-  def self.get_open_chats
-    response = get("/chats")
-    response.map { |chat| Chat.new(chat) }
-  end
-
-
-
-
-  def self.connection
-    @connection ||= Faraday.new("http://localhost:3000")
-  end
-
-  def self.post(path, data)
-    response = connection.post(path, data)
-    JSON.parse(response.body)
-  end
-
-  def self.get(path)
-    response = connection.get(path)
-    JSON.parse(response.body)
-  end
-
-  def self.put(path, data)
-    response = connection.put(path, data)
-    JSON.parse(response.body)
+    response.map { |message| Message.new(message) }
   end
 end
