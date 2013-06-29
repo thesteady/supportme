@@ -55,7 +55,19 @@
       var chat_id = $(this).attr("id");
       $("#inner_chatbox_"+chat_id).remove();
       $("#active_chat_links_"+chat_id).remove();
+      $("#waiting_chat_links_"+chat_id).remove();
       $("#outer_chatbox_"+chat_id).attr("id", "empty");
+      $.ajax({
+        url: '/admin/chats/'+chat_id,
+        type: 'PUT',
+        success: function(data) {
+        }
+      });
+    });
+
+    $("#waiting-chats").on('click', ".waiting", function(){
+      var waiting_chat_id = $(this).attr("id");
+      $("#waiting_chat_links_"+waiting_chat_id)
     });
   });
 </script>

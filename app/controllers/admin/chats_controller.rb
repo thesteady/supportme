@@ -14,12 +14,12 @@ class Admin::ChatsController < ApplicationController
   end
 
   def update
-    require_login
+    # require_login
 
     @chat = Chat.find(params[:id])
     @chat.update_attributes(status: 'resolved') if @chat.status == 'active'
     flash[:notice] = 'Thanks for helping out!'
-    redirect_to admin_chats_path
+    # redirect_to admin_chats_path
   end
 
   private
