@@ -8,7 +8,7 @@ class CustomersController < ApplicationController
 
     if customer.save
       session[:customer_id] = customer.id      
-      chat = ChatService.create(customer.id)
+      chat = ChatService.create_chat(customer.id)
       
       redirect_to admin_chat_path(chat.id)
     else

@@ -7,11 +7,11 @@
   </ul>
 
   <div id="customer-chat-box">
-    <%= form_for Message.new, remote: true do |f| %>
-      <%= f.text_field :content, class: "chat-input" %>
-      <%= f.hidden_field :chat_id, value: @chat.id %>
-      <%= f.hidden_field :author_id, value: @chat.customer_id %>
-      <%= f.hidden_field :author_type, value: "Customer" %>
+    <%= form_tag Message.new, remote: true do %>
+      <%= text_field_tag :content, class: "chat-input" %>
+      <%= hidden_field_tag :chat_id, value: @chat.id %>
+      <%= hidden_field_tag :author_id, value: @chat.customer_id %>
+      <%= hidden_field_tag :author_type, value: "Customer" %>
     <% end %>
   </div>
 </div>

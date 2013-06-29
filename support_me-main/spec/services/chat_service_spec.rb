@@ -3,8 +3,7 @@ require 'spec_helper'
 describe ChatService do
   def create_chat(id)
     customer_id  = 5
-    service = ChatService.new(id)
-    service.create(customer_id)
+    ChatService.create_chat(customer_id)
   end
 
   context "#initialize" do
@@ -24,38 +23,24 @@ describe ChatService do
     end
   end
 
-  context "#create" do
+  context ".create" do
     it "creates a chat" do
       customer_id = 5
-      service     = ChatService.new(1)
-      result      = service.create(customer_id)
-
-      expect(result.class).to eq NewChat
-      expect(result.customer_id).to eq 5
-      expect(result.status).to eq "waiting"
+      new_chat = ChatService.create_chat(customer_id)
+      
+      expect(new_chat.customer_id).to eq customer_id
+      expect(new_chat.status).to eq 'waiting'
     end
   end
 
-  context "#fetch" do
-    it "fetches a chat" do
-      create_chat(1)
-
-      service = ChatService.new(1)
-      result  = service.fetch
-
-      expect(result.class).to eq NewChat
-      expect(result.id).to eq 1
-    end
-  end
-
-  describe '.fetch' do
+  describe '.fetch_chat' do
     it 'returns the info given a valid chat id' do
       #how do we fake a chat from the other service?
       #USE VCR!!!!
-      chat_id = 1
-      chatservice = ChatService.new(chat_id)
-      response = chatservice.fetch
-      expect(response).to be_kind_of NewChat
+      chat = create_chat(1)
+      chatservice = ChatService.new(chat.id)
+      response = chatservice.fetch_chat
+      expect(response).to be_kind_of Chat
     end
   end
 
@@ -65,7 +50,7 @@ describe ChatService do
 
       service = ChatService.new(1)
       result  = service.update_status("active")
-      expect(result.class).to eq NewChat
+      expect(result.class).to eq Chat
       expect(result.status).to eq "active"
     end
   end
@@ -87,7 +72,7 @@ describe ChatService do
       service = ChatService.new(1)
       result  = service.create_message(params)
 
-      expect(result.class).to eq NewMessage
+      expect(result.class).to eq Message
       expect(result.author_id).to eq 1
       expect(result.author_type).to eq "Customer"
       expect(result.content).to eq "hello, goat"

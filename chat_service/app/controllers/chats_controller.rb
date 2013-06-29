@@ -1,9 +1,9 @@
 class ChatsController < ApplicationController
   
   def index
-    @chats = Chat.where(status: ['active', 'waiting'])
-
-    render json: @chat
+    @chats = Chat.where(status: ['active', 'waiting']).
+                  select(['id', 'customer_id', 'status']).to_a
+    render json: @chats
   end
 
   def create

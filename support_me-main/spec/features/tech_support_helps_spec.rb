@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe 'Tech Support Helps' do
-
+  let(:customer) {Customer.create( name: "Mr. Goat", email: "example@example.com" )}
+  
   describe 'going to the admin/support page' do
     context 'when there are no active customers waiting for help' do
       it 'gives a message that there are no customers' do
         login_user
+
         expect(page).to have_content('No one needs help at the moment.')
         expect(page).to_not have_content('# of Customers Waiting')
         expect(page).to_not have_content('You Are Working With:')
@@ -34,6 +36,8 @@ describe 'Tech Support Helps' do
 
     context 'when I dont have an active chat' do
       it 'tells me that i have no active chats' do
+        ChatService.stub(:get_open_chats)
+        
         visit_page_with_a_waiting_chat
         expect(page).to have_selector('#active-chats')
         expect(page).to have_content('No Active Chats.')
@@ -100,17 +104,16 @@ describe 'Tech Support Helps' do
   end
 
   def visit_page_with_a_waiting_chat
-    customer = Customer.create( name: "Mr. Goat", email: "example@example.com" )
-    customer.chats.create
+    chat = ChatService.create_chat(customer.id)
+    chatservice = ChatService.new(chat.id)
     login_user
-    # visit admin_chats_path
   end
 
   def visit_page_with_an_active_chat
-    customer = Customer.create( name: "Mr. Goat", email: "example@example.com" )
-    customer.chats.create(status: 'active')
+    chat = ChatService.create_chat(customer.id)
+    chatservice = ChatService.new(chat.id)
+    chatservice.update_status('active')    
     login_user
-    # visit admin_chats_path
   end
 
   def create_a_customer_chat

@@ -5,7 +5,6 @@ class MessagesController < ApplicationController
   end
 
   def create
-    puts params.inspect
     @message = Message.create( message_params )
     render json: @message
   end
