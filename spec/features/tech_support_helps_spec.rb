@@ -77,14 +77,15 @@ describe 'Tech Support Helps' do
 
     context 'when the chat is finished and the issue is resolved' do
       it 'lets me mark the issue is resolved', js: true do
+        pending
         click_link_or_button 'Resolve Issue'
         expect(page).to have_selector('.alert'), 'Thanks for helping out!'
 
-        within('div#active-chats') do
+        within('.active') do
           expect(page).to_not have_content('Chat #1')
         end
 
-        within('div#waiting-chats') do
+        within('.waiting') do
           expect(page).to_not have_content('Chat #1')
         end
       end
