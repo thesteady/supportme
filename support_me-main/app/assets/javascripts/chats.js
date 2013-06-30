@@ -9,5 +9,3 @@ var WaitingClickListener = function() {
 $(function(){
   WaitingClickListener();
 });
-
-

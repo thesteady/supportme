@@ -14,7 +14,6 @@ class DemoController < ApplicationController
   def show
     service   = ChatService.new(params[:id])
     @chat     = service.fetch_chat
-
     @messages = service.fetch_messages
   end
 end

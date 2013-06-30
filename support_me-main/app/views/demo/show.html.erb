@@ -8,11 +8,11 @@
 
     <div id='chat-input'>
       <%= form_tag remote: true do  %>
-        <%= text_field_tag :content, class: "chat-input" %>
+        <%= text_field_tag :content, "", class: "chat-input" %>
         <%= hidden_field_tag :chat_id, value: @chat.id %>
         <%= hidden_field_tag :author_id, value: @chat.customer_id %>
         <%= hidden_field_tag :author_type, value: 'Customer' %>
-        <%= submit "Send", controller: :messages, action: :create, class: "btn btn-success pull-right span3" %>
+        <%= submit_tag "Send", controller: :messages, action: :create, class: "btn btn-success pull-right span3" %>
       <% end %>
     </div>
   </div>

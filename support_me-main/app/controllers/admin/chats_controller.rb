@@ -8,11 +8,11 @@ class Admin::ChatsController < ApplicationController
   end
 
   def show
-    service = ChatService.new(params[:id])
-    @chat   = service.fetch_chat
+    service    = ChatService.new(params[:id])
+    @chat      = service.fetch_chat
+    @messsages = service.fetch_messages
 
     service.update_status('active') if @chat.status == 'waiting'
-    service.fetch_messages
   end
 
   def update

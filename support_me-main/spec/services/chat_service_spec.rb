@@ -90,7 +90,6 @@ describe ChatService do
 
       service = ChatService.new(1)
       result  = service.create_message(params)
-
       expect(result.class).to eq Message
       expect(result.author_id).to eq 1
       expect(result.author_type).to eq "Customer"

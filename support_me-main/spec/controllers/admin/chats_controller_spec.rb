@@ -43,7 +43,7 @@ describe Admin::ChatsController do
       end
 
       it 'renders the show template' do
-        get :show, id: chat.id
+        get :show, id: 1
         expect(response).to be_ok
         expect(response).to render_template(:show)
       end
@@ -88,8 +88,8 @@ describe Admin::ChatsController do
     end
 
     it 'assigns the chat variable' do
-      post :update, {id: chat.id}
-      expect(assigns(:chat).id).to eq chat.id
+      post :update, {id: 1}
+      expect(assigns(:chat).id).to eq 1
     end
   end
 end

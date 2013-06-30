@@ -1,8 +1,7 @@
 class ChatsController < ApplicationController
-  
+
   def index
-    @chats = Chat.where(status: ['active', 'waiting']).
-                  select(['id', 'customer_id', 'status']).to_a
+    @chats = Chat.where(status: ['active', 'waiting']).to_a
     render json: @chats
   end
 
@@ -11,17 +10,17 @@ class ChatsController < ApplicationController
     @chat.customer_id = params.permit(:customer_id)[:customer_id]
     @chat.save
 
-    render json: @chat 
+    render json: @chat
   end
 
   def show
-    @chat = Chat.find_by_id( params[:id] )
-   
+    @chat = Chat.find_or_create_by_id( params[:id] )
+
     render json: @chat
   end
 
   def update
-    @chat = Chat.find_by_id( params[:id] )
+    @chat = Chat.find_or_create_by_id( params[:id] )
     @chat.status = params.permit(:status)[:status]
     @chat.save
 
