@@ -1,0 +1,9 @@
+<li class="chat_box">
+  <span id='chat-author'>
+   <%= get_author_name_for(message) %>
+  </span>
+  <span id='chat-time'>
+    <%= formatted_time(message.created_at) %>
+  </span>
+</li>
+<li id="chat-message"><%= auto_link(message.content) %></li>

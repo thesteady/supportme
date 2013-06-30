@@ -1,0 +1,274 @@
+@import "bootstrap";
+
+// HOME
+
+@mixin text-formatting {
+  color: white;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-weight: 100;
+  text-align: left;
+  line-height: 1.2em;
+}
+
+#chat-message{
+  list-style-type:none;
+  padding: 0px;
+  margin: 0px;
+}
+
+@mixin box-border {
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+$font: 60px;
+
+#home-header{
+  font-size: $font;
+  margin-top: 100px;
+  @include text-formatting
+}
+
+#home-leader{
+  font-size: $font / 2;
+  letter-spacing: 2px;
+  @include text-formatting
+}
+
+#home {
+  background: url(/assets/home-background.jpg) repeat center center;
+  min-height: 800px;
+  min-width: 100%;
+  margin-top: -20px;
+}
+
+#login-form {
+  color: white;
+  margin: 2px;
+  margin-top: 100px;
+}
+
+#text {
+  @include text-formatting
+}
+
+.home-action {
+  font-size: $font / 2.5;
+  @include text-formatting
+}
+
+// FORMS
+
+.form {
+  background-color: white;
+  color: gray;
+  font-weight: 100;
+  opacity: 0.8;
+  padding: 20px;
+  padding-bottom: 50px;
+  @include box-border
+}
+
+input, textarea, .uneditable-input {
+  width: 94%;
+}
+
+// LINKS
+
+a {
+  color: orange;
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: #0088cc;
+  text-decoration: underline;
+}
+
+// NAVBAR
+
+.navbar-inner {
+  min-height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: white;
+  background-image: none;
+  border: 1px solid #d4d4d4;
+  border-radius: 0px;
+  box-shadow: none;
+}
+
+// ALERTS
+
+.alert {
+  padding: 8px 35px 8px 20px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  border-radius: 0px;
+  margin-top: -20px;
+}
+
+.alert-danger, .alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+
+// MODAL
+
+#modal-header {
+  color: gray;
+  font-size: $font / 2.5;
+  font-weight: 100;
+}
+
+#modal-cancel {
+  margin-right: 10px;
+}
+
+.modal {
+  width: 420px;
+  margin-left: -210px;
+  @include box-border
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-buttons {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+// CHAT
+
+@mixin text-formatting-gray {
+  color: gray;
+  margin-right: 10%;
+  font-weight: 100;
+  text-align: left;
+  line-height: 1.2em;
+}
+
+h1{
+  margin-bottom: 20px;
+  @include text-formatting-gray;
+}
+
+#chat-show {
+  margin-top: -20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+#chatbox {
+  border: 2px solid gray;
+  background-color: white;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  padding-bottom: 40px;
+  @include box-border;
+}
+
+
+.chat-input {
+  width: 98.1%;
+}
+
+#chat {
+  padding-bottom: 20px;
+  li {
+   list-style-type: none;
+   width: 100%;
+   padding-top: 2px;
+   margin-left: -25px;
+  }
+}
+
+#chat-input {
+  top: -18px;
+  width: 100%;
+}
+
+#chat-message {
+  font-size: 16px;
+}
+
+#chat-time {
+  color: gray;
+  font-size: $font / 5;
+  margin-top: 10px;
+  margin-bottom: -2px;
+}
+
+#chat-author{
+  font-weight: bold;
+  font-style: italic;
+  font-size: 90%;
+}
+
+.admin_button{
+  display: inline;
+}
+
+// CUSTOMER
+
+#customer-chat-time {
+  color: gray;
+  font-size: $font / 6;
+  margin-bottom: -4px;
+}
+
+#customer-chat-message {
+  font-size: $font / 4.5;
+  line-height: 1.2em;
+}
+
+#customer-chat-author {
+
+}
+
+.new_customer {
+  width: 200px;
+  margin-top: 20px;
+}
+
+.content {
+  padding: 45px;
+}
+
+#customer-chat-box {
+  position: fixed;
+  bottom: 0px;
+  margin-top: 2px;
+  margin-bottom: -20px;
+  background-color: white;
+  padding-top: 10px;
+  padding-left: 23px;
+  padding-right: 23px;
+  border-top: 1px solid gray;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.chat-input {
+  margin-left: -6px;
+}
+
+#customer-submit {
+  margin-left: 20px;
+  margin-top: 10px;
+  width: 220px;
+}
+
+#customer-chat {
+  margin: 10px;
+  margin-bottom: 40px;
+}

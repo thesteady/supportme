@@ -5,21 +5,15 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/support_me-main/.bundle
-/chat_service/.bundle
+/.bundle
 
 # Ignore the default SQLite database.
-/support_me-main/db/*.sqlite3
-/support_me-main/db/*.sqlite3-journal
-/chat_service/db/*.sqlite3
-/chat_service/db/*.sqlite3-journal
+/db/*.sqlite3
+/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/support_me-main/log
-/support_me-main/tmp
-/chat_service/log
-/chat_service/tmp
+/log/*.log
+/tmp
 
 # Ignore coverage files
-/support_me-main/coverage
-/chat_service/coverage
+/coverage

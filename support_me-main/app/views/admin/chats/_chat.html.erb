@@ -1,0 +1,26 @@
+<div id='inner_chatbox_<%= @chat.id%>' class="admin_chat_box">
+
+  <h4>Chat #<%= @chat.id%></h4>
+  <div class="admin_chat_content">
+    <ul id="chat<%= @chat.id%>" >
+      <%= render partial: 'admin/chats/message', collection: @messages %>
+    </ul>
+  </div>
+
+  <div id='chat-input'>
+    <%= form_for Message.new, remote: true do |f| %>
+      <%= f.text_field :content, class: "chat-input" %>
+      <%= f.hidden_field :chat_id, value: @chat.id %>
+      <%= f.hidden_field :author_id, value: current_user.id %>
+      <%= f.hidden_field :author_type, value: "User" %>
+      <%= f.submit "Send", class: "btn btn-success span1 admin_button" %>
+    <% end %>
+    
+    <button id="<%= @chat.id %>" class='btn btn-warning admin_button resolve_issue'>Resolve Issue</button>
+  </div>
+
+</div>
+
+<%= subscribe_to admin_chat_path(@chat) %>
+
+

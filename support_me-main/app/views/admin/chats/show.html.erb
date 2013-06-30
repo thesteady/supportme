@@ -1,0 +1,19 @@
+<div id="customer-chat">
+  <p id="customer-chat-time"><%= formatted_time(@chat.created_at)%></p>
+  <p id="customer-chat-message">You can start this chat by typing your question below.</p>
+
+  <ul id="chat<%= @chat.id %>" class="chat_box">
+    <%= render partial: 'admin/chats/message', collection: @messages %>
+  </ul>
+
+  <div id="customer-chat-box">
+    <%= form_tag @message, remote: true do %>
+      <%= text_field_tag :content, "", class: "chat-input" %>
+      <%= hidden_field_tag :chat_id, value: @chat.id %>
+      <%= hidden_field_tag :author_id, value: @chat.customer_id %>
+      <%= hidden_field_tag :author_type, value: "Customer" %>
+    <% end %>
+  </div>
+</div>
+
+<%= subscribe_to admin_chat_path(@chat) %>

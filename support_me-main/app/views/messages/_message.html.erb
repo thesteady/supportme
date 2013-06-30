@@ -1,0 +1,9 @@
+<li >
+  <span id="customer-chat-author">
+    <%= get_author_name_for(message) %>
+  </span>
+  <span id="customer-chat-time">
+    <%= formatted_time(message.created_at) %>
+  </span>
+</li>
+<li id="customer-chat-message"><%= auto_link(message.content) %></li>
