@@ -16,7 +16,7 @@ class Admin::ChatsController < ApplicationController
   end
 
   def update
-    require_login
+    # require_login
 
     service = ChatService.new(params[:id])
     @chat   = service.fetch_chat

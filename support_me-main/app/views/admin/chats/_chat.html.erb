@@ -15,12 +15,8 @@
       <%= f.hidden_field :author_type, value: "User" %>
       <%= f.submit "Send", class: "btn btn-success span1 admin_button" %>
     <% end %>
-    <%= button_to 'Resolve Issue',
-        admin_chat_path(@chat),
-        id: @chat.id,
-        remote: true,
-        method: :put,
-        class: 'btn btn-warning admin_button resolve_issue' %>
+    
+    <button id="<%= @chat.id %>" class='btn btn-warning admin_button resolve_issue'>Resolve Issue</button>
   </div>
 
 </div>

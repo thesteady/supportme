@@ -104,13 +104,14 @@ describe 'Tech Support Helps' do
   end
 
   def visit_page_with_a_waiting_chat
-    chat = ChatService.create_chat(customer.id)
-    chatservice = ChatService.new(chat.id)
+    service = ChatService.new
+    chat = service.create_chat(customer.id)
     login_user
   end
 
   def visit_page_with_an_active_chat
-    chat = ChatService.create_chat(customer.id)
+    service = ChatService.new
+    chat = service.create_chat(customer.id)
     chatservice = ChatService.new(chat.id)
     chatservice.update_status('active')    
     login_user

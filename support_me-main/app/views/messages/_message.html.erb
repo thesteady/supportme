@@ -1,6 +1,6 @@
 <li >
   <span id="customer-chat-author">
-    <%= message.author.name %>
+    <%= get_author_name_for(message) %>
   </span>
   <span id="customer-chat-time">
     <%= formatted_time(message.created_at) %>
