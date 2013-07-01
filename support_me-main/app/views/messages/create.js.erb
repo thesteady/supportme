@@ -1,8 +1,5 @@
 <% publish_to admin_chat_path(@chat_id) do %>
-  console.log('starting create js');
   $("#chat<%= @chat_id %>").append("<%= j render(@message) %>");
-  console.log('next line');
   $("#new_message")[0].reset();
   $("body").scrollTop( $("body")[0].scrollHeight );
-  console.log('finishing');
 <% end %>
