@@ -6,7 +6,7 @@
   <hr>
 
   <div class="admin_chat_content">
-    <ul id="chat<%= @chat.id%>" >
+    <ul id="chat<%= @chat.id%>" class="chat" >
        <%= render partial: 'messages/message', collection: @messages %>
     </ul>
   </div>
