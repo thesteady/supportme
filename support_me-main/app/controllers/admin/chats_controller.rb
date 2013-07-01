@@ -1,7 +1,13 @@
 class Admin::ChatsController < ApplicationController
   def index
+    require_login
+    
     service = ChatService.new
-    chats   = service.fetch_chats
+    chats = service.fetch_chats
+
+    #when we render a chat in the view, we need to get all existing messages for the chat
+    #we also need to update this page with some polling to update the lists automatically
+
 
     @waiting_chats = chats.select { |chat| chat.status == 'waiting' }
     @active_chats  = chats.select { |chat| chat.status == 'active' }
@@ -16,7 +22,7 @@ class Admin::ChatsController < ApplicationController
   end
 
   def update
-    # require_login
+    require_login
 
     service = ChatService.new(params[:id])
     @chat   = service.fetch_chat

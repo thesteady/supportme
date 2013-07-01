@@ -47,8 +47,26 @@
       active_chats.push("<%= chat.id %>");
     <% end %>
 
+    var getChatMessages = function(chat_id){
+      var url = '/messages.json?chat_id=' + chat_id;
+      $.getJSON(url, function(data) {
+        $.each(data, function(key, val) {
+          // console.log(val)
+          var name_and_time = "<li>" + val["name"] + "</li>";
+          var message = '<li>' + val["content"] + '</li>';
+          $("#chat" + val["chat_id"]).append(name_and_time).append(message);
+        });
+
+        // console.log(data);
+      });
+    }
+
     $.each(active_chats, function(index, value){
       $("#active_chat_links_"+value).trigger('click');
+    });
+
+    $.each(active_chats, function(index, value){
+      getChatMessages(value);
     });
 
     $(".admin-chats").on('click', ".resolve_issue", function(){
@@ -65,10 +83,10 @@
       });
     });
 
-    $("#waiting-chats").on('click', ".waiting", function(){
-      var waiting_chat_id = $(this).attr("id");
-      $("#waiting_chat_links_"+waiting_chat_id)
-    });
+    // $("#waiting-chats").on('click', ".waiting", function(){
+    //   var waiting_chat_id = $(this).attr("id");
+    //   $("#waiting_chat_links_"+waiting_chat_id)
+    // });
   });
 </script>
 

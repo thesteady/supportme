@@ -3,7 +3,7 @@
   <h4>Chat #<%= @chat.id%></h4>
   <div class="admin_chat_content">
     <ul id="chat<%= @chat.id%>" >
-      <%= render partial: 'admin/chats/message', collection: @messages %>
+       <%= render partial: 'messages/message', collection: @messages %>
     </ul>
   </div>
 
@@ -21,6 +21,4 @@
 
 </div>
 
-<%= subscribe_to admin_chat_path(@chat) %>
-
-
+<%= subscribe_to admin_chat_path(@chat.id) %>
