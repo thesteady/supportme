@@ -1,9 +1,9 @@
 class DemoController < ApplicationController
   def create
     customer = Customer.find_or_create_by_name_and_email(
-      name:  'Demo Customer',
-      email: 'demo_customer@supportme.com'
-      )
+                                      name:  'Demo Customer',
+                                      email: 'demo_customer@supportme.com'
+                                      )
 
     service = ChatService.new
     chat    = service.create_chat(customer.id)

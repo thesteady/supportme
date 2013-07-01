@@ -1,6 +1,6 @@
 module Client
   def connection
-    @connection ||= Faraday.new("http://localhost:3000")
+    @connection ||= Faraday.new("http://localhost:2000")
   end
 
   def post(path, data)

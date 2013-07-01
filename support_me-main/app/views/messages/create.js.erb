@@ -1,12 +1,8 @@
 <% publish_to admin_chat_path(@chat_id) do %>
-  $("#chat").append("<%= escape_javascript render @message %>");
-  $("#new_message")[0].reset();
-<% end %>
-
-//fix this one too?
-
-<% publish_to admin_chat_path(@chat_id) do %>
-  $("#chat<%= @chat_id%>").append("");
+  console.log('starting create js');
+  $("#chat<%= @chat_id %>").append("<%= j render(@message) %>");
+  console.log('next line');
   $("#new_message")[0].reset();
   $("body").scrollTop( $("body")[0].scrollHeight );
+  console.log('finishing');
 <% end %>

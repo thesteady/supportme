@@ -1,7 +1,12 @@
 class Admin::ChatsController < ApplicationController
   def index
+    require_login
+    
     service = ChatService.new
     chats   = service.fetch_chats
+
+    # @messages = chats.each {|chat| ChatService.new(chat.id).fetch_messages }
+
 
     @waiting_chats = chats.select { |chat| chat.status == 'waiting' }
     @active_chats  = chats.select { |chat| chat.status == 'active' }
