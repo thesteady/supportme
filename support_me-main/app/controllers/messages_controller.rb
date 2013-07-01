@@ -13,7 +13,7 @@ class MessagesController  < ApplicationController
   end
 
   def index
-    service   = ChatService.new(5)
+    service   = ChatService.new(params[:chat_id])
     @messages = service.fetch_messages
 
     respond_to do |format|
