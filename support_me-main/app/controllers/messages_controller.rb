@@ -11,4 +11,13 @@ class MessagesController  < ApplicationController
       format.js {@message}
     end
   end
+
+  def index
+    service   = ChatService.new(5)
+    @messages = service.fetch_messages
+
+    respond_to do |format|
+      format.json { render :json => @messages }
+    end
+  end
 end
