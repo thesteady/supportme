@@ -10,7 +10,9 @@ goats = [Laura Steadman, Jorge Tellez, John Maddux]
 ###Installation
 
 * Clone the repo
-* Start Rails / rails s
+* Start Rails /
+--- In chat_service: rails s
+--- In support_me-main: rails s -p 3001
 * Start Private Pub / rackup private_pub.ru -s thin -E production
 
 ###Window Widget
