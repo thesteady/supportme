@@ -6,7 +6,9 @@
       <% if @active_chats.count == 0 %>
         <h4>No Active Chats.</h4>
       <% else %>
-        <h4>Active Chats (<%= @active_chats.count %>)</h4>
+        <h4 id="<%= @active_chats.count %>" class="active_chats_title">
+          Active Chats (<%= @active_chats.count %>)
+        </h4>
       <% end %>
       <div class="chats">
         <ul id='active-chats-list'>
@@ -21,7 +23,9 @@
       <% if @waiting_chats.count == 0 %>
         <h4>No one needs help at the moment.</h4>
       <% else %>
-        <h4>Waiting Chats (<%= @waiting_chats.count %>)</h4>
+        <h4 id="<%= @waiting_chats.count %>" class="waiting_chats_title">
+          Waiting Chats (<%= @waiting_chats.count %>)
+        </h4>
       <% end %>
       <div class="chats">
         <ul id='waiting-chats-list'>
@@ -78,12 +82,27 @@
       $("#active_chat_links_"+chat_id).remove();
       $("#waiting_chat_links_"+chat_id).remove();
       $("#outer_chatbox_"+chat_id).attr("id", "empty");
+
+      var active_chats_count = parseInt($(".active_chats_title").attr("id"))-1;
+      $(".active_chats_title").attr("id", (active_chats_count) );
+      $(".active_chats_title").text("Active Chats ("+active_chats_count+")");
+
       $.ajax({
         url: '/admin/chats/'+chat_id,
         type: 'PUT',
         success: function(data) {
         }
       });
+    });
+
+    $(".waiting").click(function(){
+      var active_chats_count = parseInt($(".active_chats_title").attr("id"))+1;
+      $(".active_chats_title").attr("id", (active_chats_count) );
+      $(".active_chats_title").text("Active Chats ("+active_chats_count+")");
+
+      var waiting_chats_count = parseInt($(".waiting_chats_title").attr("id"))-1;
+      $(".waiting_chats_title").attr("id", (waiting_chats_count) );
+      $(".waiting_chats_title").text("Waiting Chats ("+waiting_chats_count+")");
     });
 
     // $("#waiting-chats").on('click', ".waiting", function(){
