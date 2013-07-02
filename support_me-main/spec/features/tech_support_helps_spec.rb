@@ -6,6 +6,7 @@ describe 'Tech Support Helps' do
   describe 'going to the admin/support page' do
     context 'when there are no active customers waiting for help' do
       it 'gives a message that there are no customers' do
+
         login_user
 
         expect(page).to have_content('No one needs help at the moment.')

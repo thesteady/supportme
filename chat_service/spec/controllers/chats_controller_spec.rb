@@ -32,6 +32,7 @@ describe ChatsController do
   describe 'POST update' do
     it 'updates the status attribute with params for active' do
       post :update, id: chat.id, status: 'active'
+      
       expect(Chat.find(chat.id).status).to eq 'active'
     end
 
