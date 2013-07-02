@@ -26,7 +26,7 @@ function unplaced(){
 $(".support-chat-window").each(function(i, obj){
   if ($(this).attr('id') === 'empty' && unplaced()) {
     $(this).html("<%= escape_javascript(render :partial => '/admin/chats/chat', :id=> 'data-chat' ) %>");
-    $(this).attr({'id': "outer_chatbox_<%= params['id'] %>"});
+    $(this).attr({'id': "<%= params['id'] %>"});
   } else {
   }
 });

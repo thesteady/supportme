@@ -6,7 +6,9 @@
       <% if @active_chats.count == 0 %>
         <h4>No Active Chats.</h4>
       <% else %>
-        <h4>Active Chats (<%= @active_chats.count %>)</h4>
+        <h4 id="<%= @active_chats.count %>" class="active_chats_title">
+          Active Chats (<%= @active_chats.count %>)
+        </h4>
       <% end %>
       <div class="chats">
         <ul id='active-chats-list'>
@@ -21,7 +23,9 @@
       <% if @waiting_chats.count == 0 %>
         <h4>No one needs help at the moment.</h4>
       <% else %>
-        <h4>Waiting Chats (<%= @waiting_chats.count %>)</h4>
+        <h4 id="<%= @waiting_chats.count %>" class="waiting_chats_title">
+          Waiting Chats (<%= @waiting_chats.count %>)
+        </h4>
       <% end %>
       <div class="chats">
         <ul id='waiting-chats-list'>
@@ -72,23 +76,72 @@
       getChatMessages(value);
     });
 
+    Array.prototype.remove = function(x) {
+      for(i in this){
+          if(this[i].toString() == x.toString()){
+              this.splice(i,1)
+          }
+      }
+    }
+
+    Array.prototype.diff = function(a) {
+      return this.filter(function(i) {return !(a.indexOf(i) > -1);});
+    };
+
+    var checkChatWindowsForVacancy = function(current_chat){
+      var open_chats_windows = []
+      $(".support-chat-window").each(function(i, obj){
+        open_chats_windows.push($(this).attr('id'));
+      });
+      open_chats_windows.remove("empty");
+      open_chats_windows.remove("empty");
+      var active_chats = []
+      $(".active").each(function(i, obj){
+        active_chats.push(($(this).attr('id')).replace("active_chat_links_",""));
+      });
+
+      var remaining_active_chats = active_chats.diff(open_chats_windows);
+
+      $.each(remaining_active_chats, function(index, value){
+        $("#active_chat_links_"+value).trigger('click');
+      });
+
+      $.each(remaining_active_chats, function(index, value){
+        getChatMessages(value);
+      });
+
+
+    }
+
     $(".admin-chats").on('click', ".resolve_issue", function(){
       var chat_id = $(this).attr("id");
       $("#inner_chatbox_"+chat_id).remove();
       $("#active_chat_links_"+chat_id).remove();
       $("#waiting_chat_links_"+chat_id).remove();
-      $("#outer_chatbox_"+chat_id).attr("id", "empty");
+      $("#"+chat_id).attr("id", "empty");
+
+      var active_chats_count = parseInt($(".active_chats_title").attr("id"))-1;
+      $(".active_chats_title").attr("id", (active_chats_count) );
+      $(".active_chats_title").text("Active Chats ("+active_chats_count+")");
+
       $.ajax({
         url: '/admin/chats/'+chat_id,
         type: 'PUT',
         success: function(data) {
         }
       });
+
+      checkChatWindowsForVacancy(chat_id);
     });
 
-    // $("#waiting-chats").on('click', ".waiting", function(){
-    //   var waiting_chat_id = $(this).attr("id");
-    //   $("#waiting_chat_links_"+waiting_chat_id)
-    // });
+    $(".waiting").click(function(){
+      var active_chats_count = parseInt($(".active_chats_title").attr("id"))+1;
+      $(".active_chats_title").attr("id", (active_chats_count) );
+      $(".active_chats_title").text("Active Chats ("+active_chats_count+")");
+
+      var waiting_chats_count = parseInt($(".waiting_chats_title").attr("id"))-1;
+      $(".waiting_chats_title").attr("id", (waiting_chats_count) );
+      $(".waiting_chats_title").text("Waiting Chats ("+waiting_chats_count+")");
+    });
   });
 </script>
