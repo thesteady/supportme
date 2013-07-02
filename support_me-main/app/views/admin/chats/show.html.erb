@@ -3,7 +3,7 @@
   <p id="customer-chat-message">You can start this chat by typing your question below.</p>
 
   <ul id="chat<%= @chat.id %>" class="chat_box">
-    <%= render partial: 'admin/chats/message', collection: @messages %>
+    <%= render partial: '/messages/message', collection: @messages %>
   </ul>
 
   <div id="customer-chat-box">

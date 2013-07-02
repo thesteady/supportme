@@ -2,4 +2,5 @@
   $("#chat<%= @chat_id %>").append("<%= j render(@message) %>");
   $("#new_message")[0].reset();
   $("body").scrollTop( $("body")[0].scrollHeight );
+  Scroller();
 <% end %>
