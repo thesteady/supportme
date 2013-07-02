@@ -1,7 +1,7 @@
 class Admin::ChatsController < ApplicationController
   def index
     require_login
-    
+
     service = ChatService.new
     chats = service.fetch_chats
 
@@ -28,9 +28,6 @@ class Admin::ChatsController < ApplicationController
     @chat   = service.fetch_chat
 
     service.update_status('resolved') if @chat.status == 'active'
-
-    flash[:notice] = 'Thanks for helping out!'
-    redirect_to admin_chats_path
   end
 
   private
