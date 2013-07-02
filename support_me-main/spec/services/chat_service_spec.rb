@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe ChatService do
   def create_chat(id)
-    customer_id = 5
-    service     = ChatService.new(id)
-    service.create_chat(customer_id)
+    customer = Customer.create(name: 'Mr. Goat', email: 'example@example.com')
+    service  = ChatService.new(id)
+    service.create_chat(customer.id)
   end
 
   context "#initialize" do
@@ -100,11 +100,13 @@ describe ChatService do
 
   context "#fetch_messages" do
     it "fetches all the messages from a given chat" do
-      create_chat(1)
 
+      user = User.create(name: 'Workin Goat', email: 'example@example.com', password: 'hello', password_confirmation: 'hello')
+      customer = Customer.create(name: 'Tony', email: 'example@example.com')
+     
       params_1 = {
         message: {
-          author_id: 1,
+          author_id: customer.id,
           author_type: "Customer",
           content: "hello, goat",
           chat_id: 1
@@ -113,7 +115,7 @@ describe ChatService do
 
       params_2 = {
         message: {
-          author_id: 4,
+          author_id: user.id,
           author_type: "User",
           content: "goodbye, goat",
           chat_id: 1
@@ -122,6 +124,7 @@ describe ChatService do
 
       service       = ChatService.new(1)
       original_size = service.fetch_messages.size
+
       service.create_message(params_1)
       service.create_message(params_2)
 

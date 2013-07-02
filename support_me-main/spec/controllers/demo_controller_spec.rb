@@ -10,12 +10,9 @@ describe DemoController do
 
   describe '#show' do
     it "displays a demo chat" do
-
-      chat = Chat.new
-      chat.id = 1
-      chat.customer_id = 3
-
-      ChatService.stub(create_chat: chat)
+      customer = Customer.create(name: 'Demo', email: 'example@example.com')
+      chatservice = ChatService.new
+      chat = chatservice.create_chat(customer.id)
 
       get :show, id: chat.id
       expect(response).to be_ok
