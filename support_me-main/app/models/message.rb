@@ -29,11 +29,8 @@ class Message
   end
 
   def message_name(author_type, author_id)
-    if author_type == "User"
-      User.find(author_id).name
-    else
-      Customer.find(author_id).name
-    end
+    User.find(author_id).name if author_type == "User"
+    Customer.find(author_id).name if author_type == "Customer"
   end
 
   def id
