@@ -1,10 +1,10 @@
 development:
-  server: "http://192.241.129.246/:9292/faye"
+  server: "http://192.241.129.246:9292/faye"
   secret_token: "secret"
 test:
   server: "http://0.0.0.0:9292/faye"
   secret_token: "secret"
 production:
-  server: "http://192.241.129.246/:9292/faye"
+  server: "http://192.241.129.246:9292/faye"
   secret_token: "secret"
   signature_expiration: 3600 # one hour
