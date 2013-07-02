@@ -9,3 +9,8 @@ var WaitingClickListener = function() {
 $(function(){
   WaitingClickListener();
 });
+
+Scroller = function() {
+  var documentHeight = $(document).height();
+  $(".admin_chat_content").scrollTop(documentHeight);
+}
