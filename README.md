@@ -8,6 +8,19 @@ goats = [Laura Steadman, Jorge Tellez, John Maddux]
 
 ---
 
+###How It Works
+
+This project is an exercise in Service Oriented Architecture. We have two applications:
+1. The Main application -- handles Customer/User creation and login and all front-end display work. Part of this application uses Private Pub (Faye) to allow instantaneous messaging between the two people chatting.
+
+2. The Chat Service application -- handles Chats and Messages.
+
+Here's a diagram of how a message is sent and received in SupportMe:
+
+![Send a Message](/app/assets/images/send_a_message.jpg "Diagram of Message Sending")
+
+---
+
 ###Installation
 
 * Clone the repo
