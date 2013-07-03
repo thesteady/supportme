@@ -1,11 +1,12 @@
 #SupportMe!
----
 
-Your one stop spot for customer service.
+Your one stop spot for customer service. This project allows website owners to add our chat widget to their site. Customers can then chat with support without leaving the home page! On the support side, we allow the user to chat with up to six customers at a time.
 
 A gSchool project by goats. :goat:
 
 goats = [Laura Steadman, Jorge Tellez, John Maddux]
+
+---
 
 ###Installation
 
@@ -14,6 +15,8 @@ goats = [Laura Steadman, Jorge Tellez, John Maddux]
 --- In chat_service: rails s
 --- In support_me-main: rails s -p 3001
 * Start Private Pub / rackup private_pub.ru -s thin -E production
+
+---
 
 ###Window Widget
 
@@ -47,6 +50,8 @@ Copy and paste this code into your site to make it work:
 
   <iframe id="supportMe" src="http://localhost:3000/customers/new" frameborder="0" overflow-x="hidden"; overflow-y= "scroll" style="position:fixed; left:70%; bottom:0px; z-index:1000; height:40px; width:260px; border:1px solid gray;"></iframe>
 ```
+
+---
 
 ###Tests
 
