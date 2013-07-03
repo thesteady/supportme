@@ -1,0 +1,332 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3000/chats
+    body:
+      encoding: UTF-8
+      string: customer_id=1
+    headers:
+      User-Agent:
+      - Faraday v0.8.7
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-ua-compatible:
+      - chrome=1
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"335c1dd3344a7db83f76374bbde745f3"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - d20a7cd6-98d2-45b7-af9c-fbc79786b9cb
+      x-runtime:
+      - '0.009911'
+      server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+      date:
+      - Wed, 03 Jul 2013 03:51:12 GMT
+      content-length:
+      - '138'
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"id":2,"customer_id":1,"status":"waiting","user_id":null,"created_at":"2013-07-03T03:51:12.596Z","updated_at":"2013-07-03T03:51:12.596Z"}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2013 03:51:12 GMT
+- request:
+    method: put
+    uri: http://localhost:3000/chats/2
+    body:
+      encoding: UTF-8
+      string: status=active
+    headers:
+      User-Agent:
+      - Faraday v0.8.7
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-ua-compatible:
+      - chrome=1
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"7ba37e081b79e7bf34d34f85a53b7105"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 3a27502a-654a-406b-a491-77e9a3e40e18
+      x-runtime:
+      - '0.009384'
+      server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+      date:
+      - Wed, 03 Jul 2013 03:51:12 GMT
+      content-length:
+      - '137'
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"id":2,"customer_id":1,"status":"active","user_id":null,"created_at":"2013-07-03T03:51:12.596Z","updated_at":"2013-07-03T03:51:12.611Z"}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2013 03:51:12 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/chats
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.7
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-ua-compatible:
+      - chrome=1
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"816bc7a9709c91e949f45056d2a138d6"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 8347f96a-a0b2-4c7a-9f15-8aba861e87c9
+      x-runtime:
+      - '0.004322'
+      server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+      date:
+      - Wed, 03 Jul 2013 03:51:13 GMT
+      content-length:
+      - '278'
+      connection:
+      - close
+      set-cookie:
+      - request_method=GET; path=/
+    body:
+      encoding: UTF-8
+      string: '[{"id":1,"customer_id":1,"status":"waiting","user_id":null,"created_at":"2013-07-03T03:51:01.729Z","updated_at":"2013-07-03T03:51:01.729Z"},{"id":2,"customer_id":1,"status":"active","user_id":null,"created_at":"2013-07-03T03:51:12.596Z","updated_at":"2013-07-03T03:51:12.611Z"}]'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2013 03:51:13 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/chats/2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.7
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-ua-compatible:
+      - chrome=1
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"7ba37e081b79e7bf34d34f85a53b7105"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 12628680-ce38-4ecf-9614-9b69f9ebeded
+      x-runtime:
+      - '0.004584'
+      server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+      date:
+      - Wed, 03 Jul 2013 03:51:14 GMT
+      content-length:
+      - '137'
+      connection:
+      - close
+      set-cookie:
+      - request_method=GET; path=/
+    body:
+      encoding: UTF-8
+      string: '{"id":2,"customer_id":1,"status":"active","user_id":null,"created_at":"2013-07-03T03:51:12.596Z","updated_at":"2013-07-03T03:51:12.611Z"}'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2013 03:51:14 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/chats/2/messages
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.7
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-ua-compatible:
+      - chrome=1
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"d751713988987e9331980363e24189ce"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - d1489e87-588b-49b4-bf87-c3193bce4202
+      x-runtime:
+      - '0.011765'
+      server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+      date:
+      - Wed, 03 Jul 2013 03:51:14 GMT
+      content-length:
+      - '2'
+      connection:
+      - close
+      set-cookie:
+      - request_method=GET; path=/
+    body:
+      encoding: UTF-8
+      string: '[]'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2013 03:51:14 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/chats/2/messages
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.7
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-ua-compatible:
+      - chrome=1
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"d751713988987e9331980363e24189ce"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 5bebcbf3-fa2c-41ea-90bc-658ef764994f
+      x-runtime:
+      - '0.005187'
+      server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+      date:
+      - Wed, 03 Jul 2013 03:51:14 GMT
+      content-length:
+      - '2'
+      connection:
+      - close
+      set-cookie:
+      - request_method=GET; path=/
+    body:
+      encoding: UTF-8
+      string: '[]'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2013 03:51:14 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/chats/2/messages
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.7
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-ua-compatible:
+      - chrome=1
+      content-type:
+      - application/json; charset=utf-8
+      etag:
+      - '"d751713988987e9331980363e24189ce"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 9482385d-6e18-419c-a2ff-8677cb2b5a21
+      x-runtime:
+      - '0.003099'
+      server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+      date:
+      - Wed, 03 Jul 2013 03:51:14 GMT
+      content-length:
+      - '2'
+      connection:
+      - close
+      set-cookie:
+      - request_method=GET; path=/
+    body:
+      encoding: UTF-8
+      string: '[]'
+    http_version: 
+  recorded_at: Wed, 03 Jul 2013 03:51:14 GMT
+recorded_with: VCR 2.5.0

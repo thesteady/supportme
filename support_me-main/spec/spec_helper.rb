@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'vcr'
 
 SimpleCov.start do
   add_filter "/spec"
@@ -18,6 +19,12 @@ Capybara.javascript_driver = :webkit
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/support/vcr_cassettes'
+  c.allow_http_connections_when_no_cassette = true
+  c.hook_into :faraday # or :fakeweb
+end
 
 RSpec.configure do |config|
   config.include Sorcery::TestHelpers::Rails
