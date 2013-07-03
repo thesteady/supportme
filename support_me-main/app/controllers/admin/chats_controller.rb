@@ -5,10 +5,6 @@ class Admin::ChatsController < ApplicationController
     service = ChatService.new
     chats = service.fetch_chats
 
-    #when we render a chat in the view, we need to get all existing messages for the chat
-    #we also need to update this page with some polling to update the lists automatically
-
-
     @waiting_chats = chats.select { |chat| chat.status == 'waiting' }
     @active_chats  = chats.select { |chat| chat.status == 'active' }
   end

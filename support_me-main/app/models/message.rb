@@ -18,10 +18,10 @@ class Message
     @id          = params["id"]
     @objectId    = @id
     @name        = message_name( params["author_type"], params["author_id"] )
-   
+
     @author_id   = params["author_id"]
     @author_type = params["author_type"]
-  
+
     @chat_id     = params["chat_id"]
     @content     = params["content"]
     @created_at  = params["created_at"] ? DateTime.parse(params["created_at"]) : DateTime.now
