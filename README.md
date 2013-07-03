@@ -17,7 +17,7 @@ This project is an exercise in Service Oriented Architecture. We have two applic
 
 Here's a diagram of how a message is sent and received in SupportMe:
 
-![Send a Message](/app/assets/images/send_a_message.jpg "Diagram of Message Sending")
+![Send a Message](/support_me-main/app/assets/images/send_a_message.jpg "Diagram of Message Sending")
 
 ---
 
