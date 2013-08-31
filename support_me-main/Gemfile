@@ -9,6 +9,7 @@ gem 'sorcery'
 gem 'private_pub'
 gem 'rails_autolink'
 gem 'faraday'
+gem 'vcr'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
